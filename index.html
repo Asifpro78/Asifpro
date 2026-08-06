@@ -3,22 +3,19 @@
 <head>
 <title>Asifpro Garments</title>
 <style>
-body { font-family: Arial; text-align: center; background: #f2f2f2; }
+body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
 .header { background: #111; color: white; padding: 30px; }
 .header img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #00ff88; }
 .contact-card { background: white; margin: 20px; padding: 20px; border-radius: 15px; }
-.btn { display: block; width: 90%; margin: 10px auto; padding: 15px; border: none; border-radius: 10px; color: white; font-size: 18px; }
+.btn { display: block; width: 90%; margin: 10px auto; padding: 15px; border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; }
 .btn-whatsapp { background: #25D366; }
 .btn-call { background: #007bff; }
 .btn-facebook { background: #1877F2; }
 .btn-mail { background: #EA4335; }
-</style>.address a {
-  color: #00ff88;
-  text-decoration: none;
-}
-.address a:hover {
-  text-decoration: underline;
-}
+.address { margin: 15px 0; font-size: 16px; }
+.address a { color: #00ff88; text-decoration: none; font-weight: bold; }
+.address a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
 
@@ -26,34 +23,39 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; }
   <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/1.jpg" alt="Jacket">
   <h1>Asifpro Garments</h1>
   <p>Premium Denim Jackets</p>
+
+  <div class="address">
+    📍 <b>Address:</b> 
+    <a href="https://maps.google.com/?q=Rex+Center+Saddar+Karachi" target="_blank">
+      Shop #12, Rex Center, Saddar, Karachi
+    </a>
+  </div>
 </div>
 
-📍 <b>Address:</b> 
-<a href="https://maps.google.com/?q=Rex+Center+Saddar+Karachi" target="_blank">
-  Shop #12, Rex Center, Saddar, Karachi
-</a>
-
-<button class="btn btn-whatsapp" onclick="window.open('https://wa.me/923052305245')">
-  💬 WhatsApp
-</button>
-
-<button class="btn btn-call" onclick="window.location.href='tel:+923052305245'">
-  📞 Call: +92 305 2305245
-</button>
-
-<button class="btn btn-facebook" onclick="window.open('https://facebook.com/')">
-  📘 Facebook
-</button>
-
-<button class="btn btn-mail" onclick="window.location.href='mailto:asifpro155@gmail.com'">
-  📧 Email: asifpro155@gmail.com
-</button>
-  </button>
+<div class="contact-card">
+  <h2>Contact Us</h2>
+  <button class="btn btn-whatsapp" onclick="window.open('https://wa.me/923052305245')">💬 WhatsApp</button>
+  <button class="btn btn-call" onclick="window.location.href='tel:+923052305245'">📞 Call: +92 305 2305245</button>
+  <button class="btn btn-facebook" onclick="window.open('https://facebook.com/')">📘 Facebook</button>
+  <button class="btn btn-mail" onclick="window.location.href='mailto:asifpro155@gmail.com'">📧 Email: asifpro155@gmail.com</button>
 </div>
 
 <div class="contact-card">
   <h2>Our Address</h2>
-  <p><b>Asifpro Garments</b><br>Rex Center<br>Saddar, Karachi, Pakistan</p>
+  <b>Asifpro Garments</b><br>
+  Rex Center<br>
+  Saddar, Karachi, Pakistan
+  
+  <div style="margin-top: 20px;">
+    <iframe 
+      src="https://maps.google.com/maps?q=Rex%20Center%20Saddar%20Karachi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+      width="100%" 
+      height="250" 
+      style="border:0; border-radius: 10px;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
 </div>
 
 </body>
