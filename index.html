@@ -199,6 +199,10 @@ body { background: #f2f2f2; padding: 0; } /* YE BHI */
 </div>
 
 <script>
+  function selectSize(el) {
+  document.querySelectorAll('.size-selectable').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  }
 function openModal(title, img, price, sizes, colors, waProduct) {
   document.getElementById("productModal").style.display = "block";
   document.body.style.overflow = 'hidden';
@@ -207,12 +211,14 @@ function openModal(title, img, price, sizes, colors, waProduct) {
   document.getElementById("modalPrice").innerText = price;
   let sizeHtml = '';
   sizes.split(',').forEach(s => {
-    sizeHtml += `<span class="size">${s}</span>`;
-  });
+  sizeHtml += `<span class="size">${s}</span>`;
+});
   document.getElementById("modalSizes").innerHTML = sizeHtml;
   document.getElementById("modalColors").innerHTML = colors? `<b>Colors:</b> ${colors}` : "";
   document.getElementById("modalBtn").onclick = function() {
-    window.open(`https://wa.me/923052305245?text=Hi%20Asifpro,%20I%20need%20wholesale%20rate%20for%20${waProduct}%20Min%2010%20pcs`);
+  let selectedSize = document.querySelector('.size-selectable.active');
+  let sizeText = selectedSize ? selectedSize.innerText : "Size not selected";
+  window.open(`https://wa.me/923052305245?text=Hi%20Asifpro,%20I%20need%20wholesale%20rate%20for%20${waProduct}%20Size:%20${sizeText}%20Min%2010%20pcs`);
   }
 }
 var modal = document.getElementById("productModal");
