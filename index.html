@@ -58,12 +58,14 @@ body {
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 
 @media (max-width: 600px) {
+.page-wrapper { max-width: 100%; box-shadow: none; } /* YE 2 LINE NAYI ADD KI */
+body { background: #f2f2f2; padding: 0; } /* YE BHI */
 .item { width: 100%; }
 .modal-content{margin: 10px auto; border-radius: 10px;}
 .modal-header img {height: 35vh;}
 .modal-body {padding: 15px;}
 .modal-body h2 {font-size: 20px;}
-}
+        }
 </style>
 </head>
 <body>
