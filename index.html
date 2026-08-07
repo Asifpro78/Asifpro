@@ -27,7 +27,10 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 10px; right: 15px; color: white; font-size: 35px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 40px; height: 40px; line-height: 38px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
 #modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 15px 15px 0 0;flex-shrink: 0;scroll-snap-align: start;}
-.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #DC3545; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #DC3545; font-weight: bold; text-align: center; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #DC3545; }.size-selectable.active { background: #DC3545; color: white; border: 2px solid #DC3545; }.cart-item { background: #f2f2f2; padding: 10px; margin: 8px 0; border-radius: 8px; text-align: left; } @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
+.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #DC3545; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #DC3545; font-weight: bold; text-align: center; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #DC3545; }.size-selectable.active { background: #DC3545; color: white; border: 2px solid #DC3545; }.cart-item { background: #f2f2f2; padding: 10px; margin: 8px 0; border-radius: 8px; text-align: left; }
+.payment-box { background: #fff3cd; border: 2px dashed #DC3545; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;}
+.payment-box h4 { margin: 0 0 10px; color: #DC3545; }
+@keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; padding-bottom: 70px;}.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
 </head>
@@ -147,13 +150,28 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
   </div>
 </div>
 
-<!-- CART MODAL -->
+<!-- CART MODAL WITH ADDRESS + PAYMENT -->
 <div id="cartModal" class="modal">
   <div class="modal-content">
     <div class="modal-header" style="background: #DC3545; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div>
     <div class="modal-body" id="cartItems"></div>
+
+    <div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;">
+      <h4 style="margin: 0 0 10px; color: #DC3545;">📦 Delivery Details</h4>
+      <input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;">
+      <input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;">
+      <textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+    </div>
+
+    <div class="payment-box">
+      <h4>💳 Payment Details - Pehle Payment Karein</h4>
+      <p><b>1. EasyPaisa:</b> 0305-2305245<br><b>Name:</b> Muhammad Asif</p>
+      <p><b>2. Faysal Bank:</b> 0127009000004004<br><b>Name:</b> Muhammad Asif</p>
+      <p style="background: #d4edda; padding: 8px; border-radius: 5px; margin-top: 8px;"><b>Note:</b> Payment k baad screenshot WhatsApp pe bhej dein</p>
+    </div>
+
     <div class="btn-group">
-      <button class="modal-btn" onclick="checkoutCart()">📱 Order on WhatsApp</button>
+      <button class="modal-btn" onclick="checkoutCart()">📱 Order with Screenshot</button>
     </div>
   </div>
 </div>
@@ -168,7 +186,43 @@ function updateCartBar() {document.getElementById("cartCount").innerText = cart.
 function openCart() {document.getElementById("cartModal").style.display = "block";document.body.style.overflow = 'hidden';let html = '';if(cart.length==0){html='<p>Cart khali hai</p>';}else{cart.forEach((item,i)=>{html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:5px;">Remove</button></div>`;});}document.getElementById("cartItems").innerHTML = html;}
 function closeCart() {document.getElementById("cartModal").style.display = "none";document.body.style.overflow = 'auto';}
 function removeCart(i) {cart.splice(i,1);updateCartBar();openCart();}
-function checkoutCart() {if(cart.length==0){alert("Cart khali hai");return;}let total = 0;let msg = "Assalamualaikum Asifpro%0AAzadi Sale Order:%0A%0A";cart.forEach(item=>{msg+=`• ${item.title} | Size: ${item.size} | Rs: ${item.price}%0A`;total += parseInt(item.price);});msg+=`%0ATotal: Rs ${total}%0A%0APlease confirm order. Shukriya!`;window.open(`https://wa.me/923052305245?text=${msg}`);cart = []; updateCartBar(); closeCart();}
+function checkoutCart() {
+  if(cart.length==0){alert("Cart khali hai");return;}
+
+  let name = document.getElementById("custName").value;
+  let phone = document.getElementById("custPhone").value;
+  let address = document.getElementById("custAddress").value;
+
+  if(name == "" || phone == "" || address == ""){
+    alert("Please Naam, Phone aur Address fill karein");
+    return;
+  }
+
+  let total = 0;
+  let msg = "Assalamualaikum Asifpro%0ANEW ORDER - AZADI SALE%0A%0A";
+
+  msg += `*Customer Details:*%0A`;
+  msg += `Naam: ${name}%0A`;
+  msg += `Phone: ${phone}%0A`;
+  msg += `Address: ${address}%0A%0A`;
+
+  msg += `*Order Details:*%0A`;
+  cart.forEach(item=>{
+    msg+=`• ${item.title} | Size: ${item.size} | Rs: ${item.price}%0A`;
+    total += parseInt(item.price);
+  });
+
+  msg+=`%0ATotal: Rs ${total}%0A`;
+  msg+=`%0APayment kar di hai. Screenshot attached hai.%0APlease confirm order. Shukriya!`;
+
+  window.open(`https://wa.me/923052305245?text=${msg}`);
+  cart = [];
+  document.getElementById("custName").value = "";
+  document.getElementById("custPhone").value = "";
+  document.getElementById("custAddress").value = "";
+  updateCartBar();
+  closeCart();
+}
 
 function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
   document.getElementById("productModal").style.display = "block";document.body.style.overflow = 'hidden';
@@ -193,4 +247,4 @@ window.onclick = function(event) { if (event.target == modal) { modal.style.disp
 
 </div>
 </body>
-  </html>
+          </html>
