@@ -188,8 +188,7 @@ body { background: #f2f2f2; padding: 0; } /* YE BHI */
     <div class="modal-body">
       <h2 id="modalTitle"></h2>
       <p class="modal-price" id="modalPrice"></p>
-      <p><b>Available Sizes:</b></p>
-      sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s}</span>`;
+      <div class="modal-sizes" id="modalSizes"></div>  <!-- YE NAYA -->
       <p id="modalColors"></p>
       <div class="info-tag">📦 <b>MOQ:</b> Minimum 10 Pieces</div>
       <div class="info-tag">🚚 <b>Delivery:</b> Cash On Delivery in Karachi</div>
@@ -211,7 +210,7 @@ function openModal(title, img, price, sizes, colors, waProduct) {
   document.getElementById("modalPrice").innerText = price;
   let sizeHtml = '';
   sizes.split(',').forEach(s => {
-  sizeHtml += `<span class="size">${s}</span>`;
+  sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s}</span>`;
 });
   document.getElementById("modalSizes").innerHTML = sizeHtml;
   document.getElementById("modalColors").innerHTML = colors? `<b>Colors:</b> ${colors}` : "";
