@@ -26,7 +26,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 10px; right: 15px; color: white; font-size: 35px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 40px; height: 40px; line-height: 38px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
 #modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 15px 15px 0 0;flex-shrink: 0;scroll-snap-align: start;}
-.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #01411C; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #01411C; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; }.modal-btn-cart { background: #FFD700; color: #01411C; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 8px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #01411C; font-weight: bold; text-align: center; }.payment-box { background: #e8f5e9; border: 2px dashed #25D366; padding: 15px; border-radius: 10px; margin: 10px 0; }.payment-box h4 { margin: 0 0 10px; color: #01411C; }.payment-box p { margin: 5px 0; font-size: 15px; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #01411C; }.size-selectable.active { background: #01411C; color: white; border: 2px solid #01411C; } @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
+.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #01411C; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #FFD700; color: #01411C; width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 8px; }.modal-btn-cart { background: #01411C; color: white; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #01411C; font-weight: bold; text-align: center; }.payment-box { background: #e8f5e9; border: 2px dashed #25D366; padding: 15px; border-radius: 10px; margin: 10px 0; }.payment-box h4 { margin: 0 0 10px; color: #01411C; }.payment-box p { margin: 5px 0; font-size: 15px; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #01411C; }.size-selectable.active { background: #01411C; color: white; border: 2px solid #01411C; } @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; }.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
 </head>
@@ -160,9 +160,10 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
         <p>Faysal Bank: 0127009000004004 - Muhammad Asif</p>
       </div>
 
+      <!-- YAHAN BUTTON SWAP KAR DIYA -->
       <div class="btn-group">
-        <button class="modal-btn" id="modalBtnOrder">🛒 Order Now - Get Azadi Rate</button>
         <button class="modal-btn-cart" id="modalBtnCart">🛍️ Add to Cart</button>
+        <button class="modal-btn" id="modalBtnOrder">🛒 Order Now - Get Azadi Rate</button>
       </div>
     </div>
   </div>
@@ -187,4 +188,4 @@ window.onclick = function(event) { if (event.target == modal) { modal.style.disp
 
 </div>
 </body>
-</html>
+    </html>
