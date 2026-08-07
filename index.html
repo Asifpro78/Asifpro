@@ -28,7 +28,7 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
 .price { color: #25D366; font-size: 18px; font-weight: bold; margin: 5px 0; }
 .size { background: #111; color: white; padding: 5px 10px; border-radius: 5px; display: inline-block; margin: 3px; font-size: 14px; }
 
-/* REVIEWS - NAYA ADD HUA */
+/* REVIEWS CSS */
 .review-card { background: #fff; margin: 15px 0; padding: 15px; border-radius: 12px; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-left: 4px solid #25D366; }
 .review-header { display: flex; align-items: center; margin-bottom: 8px; }
 .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: #111; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px; }
@@ -64,7 +64,7 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
 <div class="sale-banner">🔥 WHOLESALE ONLY - MINIMUM 10 PCS ORDER 🔥 | CASH ON DELIVERY IN KARACHI</div>
 
 <div class="header">
-  <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/1.jpg?v=112" alt="Asifpro Logo">
+  <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/1.jpg?v=113" alt="Asifpro Logo">
   <h1>Asifpro Garments</h1>
   <p>Wholesale Dealers - Premium Denim Jackets & Cargo Pants</p>
   <div class="address">
@@ -79,7 +79,68 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
 <div class="contact-card">
   <h2>🔥 Our Wholesale Collection</h2>
   <div class="gallery">
-    <!-- tumhare 6 products same rahenge -->
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/1.jpg?v=113" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Blue', 'Classic Denim Jacket')">
+      <div class="item-content">
+        <h3>Classic Denim Jacket</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <button class="btn btn-order" onclick="openModal('Classic Denim Jacket', '1.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Blue', 'Classic Denim Jacket')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/Jacket2.jpg?v=113" alt="Vintage Denim Jacket" onclick="openModal('Vintage Denim Jacket', 'Jacket2.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Vintage Wash', 'Vintage Denim Jacket')">
+      <div class="item-content">
+        <h3>Vintage Denim Jacket</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <button class="btn btn-order" onclick="openModal('Vintage Denim Jacket', 'Jacket2.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Vintage Wash', 'Vintage Denim Jacket')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/Pants.jpg?v=113" alt="AE Cargo Pants" onclick="openModal('American Eagle Cargo Pants', 'Pants.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Off White, Black, Beige', 'AE Cargo Pants')">
+      <div class="item-content">
+        <h3>American Eagle Cargo Pants</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <p><b>Colors:</b> Off White, Black, Beige</p>
+        <button class="btn btn-order" onclick="openModal('American Eagle Cargo Pants', 'Pants.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Off White, Black, Beige', 'AE Cargo Pants')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/Pants1.jpg?v=113" alt="Navy Blue Cargo Pants" onclick="openModal('Navy Blue Cargo Pants', 'Pants1.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Navy Blue', 'Navy Blue Cargo Pants')">
+      <div class="item-content">
+        <h3>Navy Blue Cargo Pants</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <button class="btn btn-order" onclick="openModal('Navy Blue Cargo Pants', 'Pants1.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Navy Blue', 'Navy Blue Cargo Pants')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/Pants2.jpg?v=113" alt="Camo Cargo Pants" onclick="openModal('Camo Cargo Pants', 'Pants2.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Army Camo', 'Camo Cargo Pants')">
+      <div class="item-content">
+        <h3>Camo Cargo Pants</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <button class="btn btn-order" onclick="openModal('Camo Cargo Pants', 'Pants2.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Army Camo', 'Camo Cargo Pants')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/Pants3.jpg?v=113" alt="Camo Cargo Pants New" onclick="openModal('Camo Cargo Pants - New', 'Pants3.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Green Camo', 'Camo Cargo Pants New')">
+      <div class="item-content">
+        <h3>Camo Cargo Pants - New</h3>
+        <p class="price">DM FOR BULK RATE</p>
+        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
+        <button class="btn btn-order" onclick="openModal('Camo Cargo Pants - New', 'Pants3.jpg', 'DM FOR BULK RATE', '28,30,32,34,36,38', 'Green Camo', 'Camo Cargo Pants New')">🛒 Get Wholesale Rate</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -97,10 +158,10 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
   <a href="https://maps.google.com/?q=Rex+Center+Saddar+Karachi" target="_blank" style="display:block; margin-top:10px; color:#007bff; font-weight:bold;">📍 Google Maps me Kholo</a>
 </div>
 
-<!-- 3. CUSTOMER REVIEWS - NAYA SECTION -->
+<!-- 3. CUSTOMER REVIEWS - NAYA ADD KIYA -->
 <div class="contact-card">
   <h2>⭐ Customer Reviews</h2>
-  <p style="color:#666; font-size:14px;">Hamare 500+ Wholesale Customers ka Bharosa</p>
+  <p style="color:#666; font-size:14px;">500+ Satisfied Wholesale Buyers</p>
 
   <div class="review-card">
     <div class="review-header">
@@ -119,10 +180,10 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
       <div class="review-avatar">F</div>
       <div>
         <div class="review-name">Faisal Garments - Lahore</div>
-        <div class="stars">★★★</div>
+        <div class="stars">★★★★★</div>
       </div>
     </div>
-    <p>"Denim jackets ki fitting aur kapra dono top class. COD available hai isliye order karne me tension nahi. Highly recommended!"</p>
+    <p>"Denim jackets ki fitting aur kapra dono top class. COD available hai isliye order karne me tension nahi."</p>
     <div class="review-date">8 July 2026</div>
   </div>
 
@@ -134,7 +195,7 @@ body { font-family: Arial; text-align: center; background: #f2f2f2; margin: 0; }
         <div class="stars">★★☆</div>
       </div>
     </div>
-    <p>"Cargo pants ki variety bohot achi hai. AE wale maal ki demand bohot hai. Asif bhai response bhi jaldi dete hain WhatsApp pe."</p>
+    <p>"Cargo pants ki variety bohot achi hai. Asif bhai WhatsApp pe jaldi response dete hain. Highly recommended!"</p>
     <div class="review-date">1 July 2026</div>
   </div>
 
@@ -178,7 +239,9 @@ function openModal(title, img, price, sizes, colors, waProduct) {
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalPrice").innerText = price;
   let sizeHtml = '';
-  sizes.split(',').forEach(s => { sizeHtml += `<span class="size">${s}</span>`; });
+  sizes.split(',').forEach(s => {
+    sizeHtml += `<span class="size">${s}</span>`;
+  });
   document.getElementById("modalSizes").innerHTML = sizeHtml;
   document.getElementById("modalColors").innerHTML = colors? `<b>Colors:</b> ${colors}` : "";
   document.getElementById("modalBtn").onclick = function() {
@@ -192,4 +255,4 @@ window.onclick = function(event) { if (event.target == modal) { modal.style.disp
 </script>
 
 </body>
-</html>
+                                                                                                                   </html>
