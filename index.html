@@ -26,7 +26,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 10px; right: 15px; color: white; font-size: 35px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 40px; height: 40px; line-height: 38px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
 #modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 15px 15px 0 0;flex-shrink: 0;scroll-snap-align: start;}
-.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #01411C; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #01411C; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; position: sticky; bottom: 0; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; }.azadi-tag { background: #FFD700; color: #01411C; font-weight: bold; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #01411C; }.size-selectable.active { background: #01411C; color: white; border: 2px solid #01411C; } @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
+.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #01411C; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #01411C; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; }.modal-btn-cart { background: #FFD700; color: #01411C; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 8px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #01411C; font-weight: bold; text-align: center; }.payment-box { background: #e8f5e9; border: 2px dashed #25D366; padding: 15px; border-radius: 10px; margin: 10px 0; }.payment-box h4 { margin: 0 0 10px; color: #01411C; }.payment-box p { margin: 5px 0; font-size: 15px; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #01411C; }.size-selectable.active { background: #01411C; color: white; border: 2px solid #01411C; } @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; }.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
 </head>
@@ -114,6 +114,21 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 </div>
 
 <div class="contact-card">
+  <h2>💳 Online Payment Details</h2>
+  <div class="payment-box">
+    <h4>📱 EasyPaisa</h4>
+    <p><b>Account:</b> 0305-2305245</p>
+    <p><b>Name:</b> Muhammad Asif</p>
+  </div>
+  <div class="payment-box">
+    <h4>🏦 Faysal Bank</h4>
+    <p><b>Account:</b> 0127009000004004</p>
+    <p><b>Name:</b> Muhammad Asif</p>
+  </div>
+  <p style="font-size: 13px; color: #555;">Payment ke baad screenshot WhatsApp pe bhej dein</p>
+</div>
+
+<div class="contact-card">
   <h2>📍 Visit Our Shop</h2>
   <div class="address"><p><b>Shop #BS47, Rex Center</b></p><p>Saddar, Karachi, Pakistan</p></div>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.5!2d67.027!3d24.860!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e6a0e123456%3A0x1234567890abcdef!2sRex%20Center%2C%20Saddar%20Town%2C%20Karachi!5e0!3m2!1sen!2s!4v1720000" width="100%" height="300" style="border:0; border-radius: 10px; margin-top: 15px;" allowfullscreen="" loading="lazy"></iframe>
@@ -138,7 +153,17 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       <div class="modal-sizes" id="modalSizes"></div>
       <p id="modalColors"></p>
       <div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div>
-      <button class="modal-btn" id="modalBtn">🛒 Order Now - Get Azadi Rate</button>
+
+      <div class="payment-box">
+        <h4>💳 Payment Method</h4>
+        <p>EasyPaisa: 0305-2305245 - Muhammad Asif</p>
+        <p>Faysal Bank: 0127009000004004 - Muhammad Asif</p>
+      </div>
+
+      <div class="btn-group">
+        <button class="modal-btn" id="modalBtnOrder">🛒 Order Now - Get Azadi Rate</button>
+        <button class="modal-btn-cart" id="modalBtnCart">🛍️ Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>
@@ -151,8 +176,10 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
   let galleryHtml = '';img.split(',').forEach(pic => {galleryHtml += `<img src="https://raw.githubusercontent.com/Asifpro78/Asifpro/main/${pic}">`;});document.getElementById("modalGallery").innerHTML = galleryHtml;
   let sizeHtml = '';sizes.split(',').forEach(s => {sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s}</span>`;});document.getElementById("modalSizes").innerHTML = sizeHtml;
   document.getElementById("modalColors").innerHTML = colors? `<b>Colors:</b> ${colors}` : "";
-  document.getElementById("modalBtn").onclick = function() {let selectedSize = document.querySelector('.size-selectable.active');let sizeText = selectedSize? selectedSize.innerText : "Size not selected";window.open(`https://wa.me/923052305245?text=Hi%20Asifpro,%20I%20want%20to%20order%20${waProduct}%20Size:%20${sizeText}%20Azadi%20Rate:%20Rs2400`);}
-}
+
+  document.getElementById("modalBtnOrder").onclick = function() {let selectedSize = document.querySelector('.size-selectable.active');let sizeText = selectedSize? selectedSize.innerText : "Size not selected";window.open(`https://wa.me/923052305245?text=Hi%20Asifpro,%20I%20want%20to%20order%20${waProduct}%20Size:%20${sizeText}%20Azadi%20Rate:%20Rs2400`);}
+
+  document.getElementById("modalBtnCart").onclick = function() {let selectedSize = document.querySelector('.size-selectable.active');let sizeText = selectedSize? selectedSize.innerText : "Size not selected";alert("✅ " + title + " Size: " + sizeText + " cart me add ho gaya!\n\nPayment: EasyPaisa 03052305245\nFaysal Bank: 0127009000004004\nName: Muhammad Asif");}
 var modal = document.getElementById("productModal");var span = document.getElementsByClassName("modal-close")[0];span.onclick = function() { modal.style.display = "none"; document.body.style.overflow = 'auto'; }
 window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; document.body.style.overflow = 'auto'; }}
 </script>
