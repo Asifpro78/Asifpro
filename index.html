@@ -218,20 +218,26 @@ function cancelOrder() { // NAYA FUNCTION
 ...upar wala code...
 
 function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
-  document.getElementById("productModal").style.display = "block";document.body.style.overflow = 'hidden';
+  let modal = document.getElementById("productModal");
+  modal.style.display = "block";
+  document.body.style.overflow = 'hidden';
+
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
   document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
 
+  // Gallery theek karne wala code
   let galleryHtml = '';
-  img.split(',').forEach(pic => {
-    galleryHtml += `<img src="https://asifpro78.github.io/Asifpro/${pic.trim()}">`;
+  let images = img.split(',');
+  images.forEach(pic => {
+    let picName = pic.trim(); // space hata dega
+    galleryHtml += `<img src="https://asifpro78.github.io/Asifpro/${picName}" onerror="this.style.display='none'">`;
   });
   document.getElementById("modalGallery").innerHTML = galleryHtml;
 
   let sizeHtml = '';
   sizes.split(',').forEach(s => {
-    sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s}</span>`;
+    sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s.trim()}</span>`;
   });
   document.getElementById("modalSizes").innerHTML = sizeHtml;
 
@@ -244,18 +250,21 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
     cart.push({title: title, size: sizeText, price: newPrice});
     updateCartBar();
     alert("✅ " + title + " Size: " + sizeText + " cart me add ho gaya!");
-    document.getElementById("productModal").style.display = "none";
+    modal.style.display = "none";
     document.body.style.overflow = 'auto';
   }
 }
 
-var modal = document.getElementById("productModal");
-var span = document.getElementsByClassName("modal-close")[0];
-span.onclick = function() { modal.style.display = "none"; document.body.style.overflow = 'auto'; }
-window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; document.body.style.overflow = 'auto'; }}
-window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; document.body.style.overflow = 'auto'; }}
-</script>
+function closeModal() {
+  document.getElementById("productModal").style.display = "none";
+  document.body.style.overflow = 'auto';
+}
 
+window.onclick = function(event) { 
+  if (event.target.id == "productModal") { 
+    closeModal();
+  }
+  }
 </div>
 </body>
 </html>
