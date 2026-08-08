@@ -6,30 +6,31 @@
 <style>
 body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;display: flex;justify-content: center;padding: 10px 0; padding-bottom: 70px;}
 .page-wrapper {width: 100%;max-width: 794px;background: #f2f2f2;box-shadow: 0 0 15px rgba(0,0,0,0.2); position: relative;}
-.cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #DC3545; color: white; padding: 15px; font-weight: bold; z-index: 100; display: none; cursor: pointer; text-align: center; font-size: 18px; border-top: 3px solid #FFD700;}
-.sale-banner { background: #DC3545; color: white; padding: 15px 10px; font-weight: bold; font-size: 15px; border-bottom: 4px solid #FFD700; line-height: 1.6;}
-.discount-badge { background: #FFD700; color: #DC3545; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 900; margin-left: 8px; display: inline-block; white-space: nowrap;}
+.cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #28a745; color: white; padding: 15px; font-weight: bold; z-index: 100; display: none; cursor: pointer; text-align: center; font-size: 18px; border-top: 3px solid #d4edda;}
+.sale-banner { background: #28a745; color: white; padding: 15px 10px; font-weight: bold; font-size: 15px; border-bottom: 4px solid #d4edda; line-height: 1.6;}
+.discount-badge { background: #d4edda; color: #28a745; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 900; margin-left: 8px; display: inline-block; white-space: nowrap;}
 .header { background: #111; color: white; padding: 30px; }
 .header img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #00ff88; }
 .contact-card { background: white; margin: 20px; padding: 20px; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 .btn { display: block; width: 90%; margin: 10px auto; padding: 15px; border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-weight: bold; }
 .btn-whatsapp { background: #25D366; }.btn-call { background: #007bff; }.btn-facebook { background: #1877F2; }.btn-insta { background: #E4405F; }.btn-mail { background: #EA4335; }.btn-order { background: #25D366; font-size: 16px; padding: 10px; margin-top: 8px; width: 95%; }
-.address { margin: 15px 0; font-size: 16px; }.address a { color: #00ff88; text-decoration: none; font-weight: bold; }
+.address { margin: 15px 0; font-size: 16px; }.address a { color: #28a745; text-decoration: none; font-weight: bold; }
 .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
 .item { background: #fff; padding: 0; border-radius: 12px; border: 2px solid #eee; width: 48%; max-width: 320px; text-align: center; overflow: hidden; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
 .item img { width: 100%; height: 250px; object-fit: cover; display: block; cursor: pointer; }
 .item-content { padding: 12px; }
 .item h3 { color: white; margin: 0 0 8px; font-size: 18px; font-weight: 900; text-transform: uppercase; background: #111; padding: 8px; margin: -12px -12px 10px -12px; }
-.price-wrap { margin: 8px 0; }.old-price { text-decoration: line-through; color: #999; font-size: 14px; }.new-price { color: #DC3545; font-size: 20px; font-weight: bold; }.save-tag { background: #FFD700; color: #DC3545; font-size: 12px; padding: 3px 8px; border-radius: 5px; font-weight: bold; }
+.price-wrap { margin: 8px 0; }.old-price { text-decoration: line-through; color: #999; font-size: 14px; }.new-price { color: #28a745; font-size: 20px; font-weight: bold; }.save-tag { background: #d4edda; color: #28a745; font-size: 12px; padding: 3px 8px; border-radius: 5px; font-weight: bold; }
 .size { background: #111; color: white; padding: 5px 10px; border-radius: 5px; display: inline-block; margin: 3px; font-size: 14px; }
 .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow-y: auto; padding: 10px; box-sizing: border-box; }
 .modal-content { background-color: #fff; margin: 20px auto; padding: 0; border-radius: 15px; width: 100%; max-width: 500px; text-align: left; animation: zoom 0.3s; max-height: 95vh; overflow-y: auto; }
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 10px; right: 15px; color: white; font-size: 35px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 40px; height: 40px; line-height: 38px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
 #modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 15px 15px 0 0;flex-shrink: 0;scroll-snap-align: start;}
-.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #DC3545; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #FFD700; color: #DC3545; font-weight: bold; text-align: center; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #25D366; }.size-selectable.active { background: #25D366; color: white; border: 2px solid #25D366; }.cart-item { background: #f2f2f2; padding: 10px; margin: 8px 0; border-radius: 8px; text-align: left; }
-.payment-box { background: #fff3cd; border: 2px dashed #DC3545; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;}
-.payment-box h4 { margin: 0 0 10px; color: #DC3545; }
+.modal-body { padding: 20px; }.modal-body h2 { margin: 0 0 10px; color: #111; font-size: 22px; }.modal-price { color: #28a745; font-size: 22px; font-weight: bold; margin: 10px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 10px; }.info-tag { background: #f2f2f2; padding: 8px; border-radius: 8px; margin: 5px 0; font-size: 14px; text-align: left; }.azadi-tag { background: #d4edda; color: #28a745; font-weight: bold; text-align: center; }.size-selectable { cursor: pointer; transition: 0.2s; }.size-selectable:hover { background: #25D366; }.size-selectable.active { background: #25D366; color: white; border: 2px solid #25D366; }.cart-item { background: #f2f2f2; padding: 10px; margin: 8px 0; border-radius: 8px; text-align: left; }
+.cod-box { background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;}
+.cod-box h4 { margin: 0 0 5px; color: #28a745; }
+.delivery-info { background: #f2f2f2; border-left: 4px solid #28a745; padding: 12px; border-radius: 8px; margin: 10px 0; text-align: left;}
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; padding-bottom: 70px;}.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
@@ -40,7 +41,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 <div class="sale-banner">🇵🇰 14 AUGUST AZADI SALE 🇵🇰 <span class="discount-badge">20% FLAT OFF</span></div>
 
 <div class="header">
-  <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Asifpro Logo">
+  <img src="https://asifpro78.github.io/Asifpro/logo.png" alt="Asifpro Logo">
   <h1>Asifpro Garments</h1>
   <p>Premium Denim Jackets & Cargo Pants</p>
   <div class="address">
@@ -64,7 +65,6 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       </div>
     </div>
 
-    <!-- NAYA PRODUCT ADD -->
     <div class="item">
       <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull Bear Denim Carrot Fit" onclick="openModal('Pull Bear Denim Carrot Fit', 'carrot1.jpg,carrot2.jpg', '2500', '2000', '28,30,32,34,36', 'Sky Blue, Mid Blue', 'Pull Bear Denim Carrot Fit')">
       <div class="item-content">
@@ -137,7 +137,13 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close">&times;</span><div id="modalGallery"></div></div><div class="modal-body"><h2 id="modalTitle"></h2><p><span class="modal-old-price" id="modalOldPrice"></span></p><p class="modal-price" id="modalPrice"></p><div class="modal-sizes" id="modalSizes"></div><p id="modalColors"></p><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
 
-<div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #DC3545; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;"><h4 style="margin: 0 0 10px; color: #DC3545;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea></div><div class="payment-box"><h4>💳 Payment Details - Pehle Payment Karein</h4><p><b>1. EasyPaisa:</b> 0305-2305245<br><b>Name:</b> Muhammad Asif</p><p><b>2. Faysal Bank:</b> 0127009000004004<br><b>Name:</b> Muhammad Asif</p><p style="background: #d4edda; padding: 8px; border-radius: 5px; margin-top: 8px;"><b>Note:</b> Payment k baad screenshot WhatsApp pe bhej dein</p></div><div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 Order with Screenshot</button></div></div></div>
+<div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #28a745; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;"><h4 style="margin: 0 10px; color: #28a745;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea></div>
+
+<!-- PAYMENT DETAILS HATA KAR COD LAGA DIYA -->
+<div class="cod-box"><h4>💵 Payment: Cash On Delivery</h4><p>Parcel milne ke baad rider ko payment karein. Koi advance nahi.</p></div>
+<div class="delivery-info"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
+
+<div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 Order on WhatsApp</button></div></div></div>
 
 <div id="cartBar" class="cart-bar" onclick="openCart()">🛒 Cart: <span id="cartCount">0</span> items - Order Now</div>
 
@@ -152,10 +158,10 @@ function checkoutCart() {
   if(cart.length==0){alert("Cart khali hai");return;}
   let name = document.getElementById("custName").value;let phone = document.getElementById("custPhone").value;let address = document.getElementById("custAddress").value;
   if(name == "" || phone == "" || address == ""){alert("Please Naam, Phone aur Address fill karein");return;}
-  let total = 0;let msg = "Assalamualaikum Asifpro%0ANEW ORDER - AZADI SALE%0A%0A";
+  let total = 210;let msg = "Assalamualaikum Asifpro%0ANEW ORDER - AZADI SALE%0A%0A";
   msg += `*Customer Details:*%0A`;msg += `Naam: ${name}%0A`;msg += `Phone: ${phone}%0A`;msg += `Address: ${address}%0A%0A`;
   msg += `*Order Details:*%0A`;cart.forEach(item=>{msg+=`• ${item.title} | Size: ${item.size} | Rs: ${item.price}%0A`;total += parseInt(item.price);});
-  msg+=`%0ATotal: Rs ${total}%0A`;msg+=`%0APayment kar di hai. Screenshot attached hai.%0APlease confirm order. Shukriya!`;
+  msg+=`%0ADelivery: Rs 210%0ATotal: Rs ${total}%0A`;msg+=`%0APayment: Cash On Delivery%0APlease confirm order. Shukriya!`;
   window.open(`https://wa.me/923052305245?text=${msg}`);
   cart = [];document.getElementById("custName").value = "";document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();
 }
@@ -178,4 +184,4 @@ window.onclick = function(event) { if (event.target == modal) { modal.style.disp
 
 </div>
 </body>
-  </html>
+    </html>
