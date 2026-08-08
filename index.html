@@ -186,13 +186,21 @@ function checkoutCart() {
   cart = [];document.getElementById("custName").value = "";document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();
 }
 
-function clearCart() {
-  if(confirm("Kya aap cart clear karna chahte hain?")){
-    cart = [];
-    updateCartBar();
-    closeCart();
-    alert("Cart clear ho gaya");
-  }
+function createCard(p) {
+  const div = document.createElement("div");
+  div.className = "card";
+  div.setAttribute("data-category", p.category);
+  div.onclick = () => openModal(p.title, p.img, p.oldPrice, p.newPrice, p.sizes, p.colors); // YE LINE CHANGE KI
+  div.innerHTML = `
+    <img src="https://asifpro78.github.io/Asifpro/${p.img.split(',')[0]}">
+    <div class="title">${p.title}</div>
+    <div class="price"><s>Rs. ${p.oldPrice}</s> Rs. ${p.newPrice} <span class="save">SAVE ${p.oldPrice - p.newPrice}</span></div>
+    <div class="sizes"><strong>Sizes:</strong> ${p.sizes.split(',').map(s => `<span>${s.trim()}</span>`).join('')}</div>
+    <div class="colors"><strong>Colors:</strong> ${p.colors}</div>
+    <a class="btn" href="https://wa.me/923001234567?text=I want to order ${encodeURIComponent(p.title)}" target="_blank">🛒 Order Now - Azadi Offer</a>
+  `;
+  return div;
+}
 }
 
 function     cancelOrder() {
