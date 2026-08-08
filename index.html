@@ -139,11 +139,14 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #28a745; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;"><h4 style="margin: 0 10px; color: #28a745;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea></div>
 
-<!-- PAYMENT DETAILS HATA KAR COD LAGA DIYA -->
 <div class="cod-box"><h4>💵 Payment: Cash On Delivery</h4><p>Parcel milne ke baad rider ko payment karein. Koi advance nahi.</p></div>
 <div class="delivery-info"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
 
-<div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 Order on WhatsApp</button></div></div></div>
+<!-- YAHAN BUTTON CHANGE KIYE HAIN -->
+<div class="btn-group">
+  <button class="modal-btn" onclick="checkoutCart()">📱 Place Order</button>
+  <button class="modal-btn" onclick="clearCart()" style="background:#c62828; margin-top:10px;">❌ Cancel Order</button>
+</div></div></div>
 
 <div id="cartBar" class="cart-bar" onclick="openCart()">🛒 Cart: <span id="cartCount">0</span> items - Order Now</div>
 
@@ -165,6 +168,17 @@ function checkoutCart() {
   window.open(`https://wa.me/923052305245?text=${msg}`);
   cart = [];document.getElementById("custName").value = "";document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();
 }
+
+<!-- YE NAYA FUNCTION ADD KIYA HAI -->
+function clearCart() {
+  if(confirm("Kya aap cart clear karna chahte hain?")){
+    cart = [];
+    updateCartBar();
+    closeCart();
+    alert("Cart clear ho gaya");
+  }
+}
+
 function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
   document.getElementById("productModal").style.display = "block";document.body.style.overflow = 'hidden';
   document.getElementById("modalTitle").innerText = title;document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
@@ -184,4 +198,4 @@ window.onclick = function(event) { if (event.target == modal) { modal.style.disp
 
 </div>
 </body>
-    </html>
+      </html>
