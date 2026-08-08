@@ -207,10 +207,10 @@ function     cancelOrder() {
       document.getElementById("modalTitle").innerText = title;
       document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
       document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
-      document.getElementById("modalGallery").innerHTML = `<img src="https://asifpro78.github.io/Asifpro/${img.split(',')[0].trim()}">`;
-    slideImages = img.split(',');
-currentSlide = 0;
-document.getElementById('modalGallery').innerHTML = `<img src="${slideImages[0]}">`;  
+      
+      slideImages = img.split(',').map(i => `https://asifpro78.github.io/Asifpro/${i.trim()}`);
+document.getElementById("modalGallery").innerHTML = `<img src="${slideImages[0]}">`;
+      
       let sizeHtml = '';
       sizes.split(',').forEach(s => { sizeHtml += `<span class="size" onclick="this.classList.toggle('active')">${s.trim()}</span>`; });
       document.getElementById("modalSizes").innerHTML = sizeHtml;
