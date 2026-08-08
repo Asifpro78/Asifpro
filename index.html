@@ -195,50 +195,41 @@ function clearCart() {
   }
 }
 
-function cancelOrder() { // NAYA FUNCTION
-  let name = document.getElementById("custName").value;
-  let phone = document.getElementById("custPhone").value;
-  if(name == "" || phone == ""){
-    alert("Pehle Naam aur Phone fill karein");
-    return;
-  }
-  if(lastOrderId == ""){
-    alert("Abhi tak koi order place nahi hua");
-    return;
-  }
-  let msg = "Assalamualaikum Asifpro%0A❌ CANCEL ORDER REQUEST%0A%0A";
-  msg += `*Order ID: ${lastOrderId}*%0A`; // NAYA
-  msg += `Naam: ${name}%0A`;
-  msg += `Phone: ${phone}%0A`;
-  msg += `%0AMeharbaani karke mera ye order cancel kar dein. Shukriya!`;
-  window.open(`https://wa.me/923052305245?text=${msg}`);
-  alert(`Cancel request bhej di gayi hai Order ID: ${lastOrderId} ke liye`);
-}
+function     cancelOrder() {
+      document.getElementById('orderPopup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
 
-...upar wala code...
+    // === MODAL CODE START ===
+    function openModal(title, img, oldPrice, newPrice, sizes, colors) {
+      document.getElementById("productModal").style.display = "flex";
+      document.body.style.overflow = "hidden";
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
+      document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
+      document.getElementById("modalGallery").innerHTML = `<img src="https://asifpro78.github.io/Asifpro/${img.split(',')[0].trim()}">`;
+      
+      let sizeHtml = '';
+      sizes.split(',').forEach(s => { sizeHtml += `<span class="size" onclick="this.classList.toggle('active')">${s.trim()}</span>`; });
+      document.getElementById("modalSizes").innerHTML = sizeHtml;
+      
+      document.getElementById("modalColors").innerText = colors;
+    }
 
-function openModal(title, img, oldPrice, newPrice, sizes, colors) {
-  document.getElementById("productModal").style.display = "flex";
-  document.getElementById("modalTitle").innerText = title;
-  document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
-  document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
-  document.getElementById("modalGallery").innerHTML = `<img src="https://asifpro78.github.io/Asifpro/${img.split(',')[0]}">`;
-  
-  let sizeHtml = '';
-  sizes.split(',').forEach(s => { sizeHtml += `<span class="size" onclick="this.classList.toggle('active')">${s.trim()}</span>`; });
-  document.getElementById("modalSizes").innerHTML = sizeHtml;
-  
-  document.getElementById("modalColors").innerText = colors;
-}
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
 
-function closeModal() {
-  document.getElementById("productModal").style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target.id == "productModal") {
-    closeModal();
-  }
+    window.onclick = function(event) {
+      if (event.target.id == "productModal") {
+        closeModal();
+      }
+    }
+    // === MODAL CODE END ===
+  </script>
+</body>
+</html>
 }
 </script>
 </body>
