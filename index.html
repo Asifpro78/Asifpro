@@ -217,47 +217,29 @@ function cancelOrder() { // NAYA FUNCTION
 
 ...upar wala code...
 
-function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
-  document.getElementById("productModal").style.display = "block";
-  document.body.style.overflow = 'hidden';
-
+function openModal(title, img, oldPrice, newPrice, sizes, colors) {
+  document.getElementById("productModal").style.display = "flex";
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
   document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
-
-  // Picture show karne ka naya tareeqa
-  let firstPic = img.split(',')[0].trim(); // Sirf pehli picture lega
-  document.getElementById("modalGallery").innerHTML = `<img src="https://asifpro78.github.io/Asifpro/${firstPic}">`;
-
+  document.getElementById("modalGallery").innerHTML = `<img src="https://asifpro78.github.io/Asifpro/${img.split(',')[0]}">`;
+  
   let sizeHtml = '';
-  sizes.split(',').forEach(s => {
-    sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s.trim()}</span>`;
-  });
+  sizes.split(',').forEach(s => { sizeHtml += `<span class="size" onclick="this.classList.toggle('active')">${s.trim()}</span>`; });
   document.getElementById("modalSizes").innerHTML = sizeHtml;
-
-  document.getElementById("modalColors").innerHTML = colors? `<b>Colors:</b> ${colors}` : "";
-
-  document.getElementById("modalBtnCart").onclick = function() {
-    let selectedSize = document.querySelector('.size-selectable.active');
-    if(!selectedSize){alert("Pehle Size select karo");return;}
-    cart.push({title: title, size: selectedSize.innerText, price: newPrice});
-    updateCartBar();
-    alert("✅ " + title + " Size: " + selectedSize.innerText + " cart me add ho gaya!");
-    closeModal();
-  }
+  
+  document.getElementById("modalColors").innerText = colors;
 }
 
 function closeModal() {
   document.getElementById("productModal").style.display = "none";
-  document.body.style.overflow = 'auto';
 }
 
-// Modal bahar click karne se band ho
 window.onclick = function(event) {
   if (event.target.id == "productModal") {
     closeModal();
   }
-    }
+}
 </script>
 </body>
 </html>
