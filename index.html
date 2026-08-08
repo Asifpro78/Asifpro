@@ -242,7 +242,7 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
     if(!selectedSize){alert("Pehle Size select karo");return;}
     cart.push({title: title, size: selectedSize.innerText, price: newPrice});
     updateCartBar();
-    alert("✅ " + title + " cart me add ho gaya!");
+    alert("✅ " + title + " Size: " + selectedSize.innerText + " cart me add ho gaya!");
     closeModal();
   }
 }
@@ -250,4 +250,11 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors, waProduct) {
 function closeModal() {
   document.getElementById("productModal").style.display = "none";
   document.body.style.overflow = 'auto';
+}
+
+// Modal bahar click karne se band ho
+window.onclick = function(event) {
+  if (event.target.id == "productModal") {
+    closeModal();
   }
+    }
