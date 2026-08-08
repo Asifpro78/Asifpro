@@ -31,6 +31,9 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .cod-box { background: #d4edda; border: 2px solid #28a745; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;}
 .cod-box h4 { margin: 0 0 5px; color: #28a745; }
 .delivery-info { background: #f2f2f2; border-left: 4px solid #28a745; padding: 12px; border-radius: 8px; margin: 10px 0; text-align: left;}
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px; padding: 8px 12px; cursor: pointer; z-index: 1001; border-radius: 50%; }
+.arrow.left { left: 15px; } 
+.arrow.right { right: 15px; }
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; padding-bottom: 70px;}.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
@@ -135,16 +138,14 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
   <button class="btn btn-mail" onclick="window.location.href='mailto:asifpro155@gmail.com'">📧 Email: asifpro155@gmail.com</button>
 </div>
 
-<div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close">&times;</span><div id="modalGallery"></div></div><div class="modal-body"><h2 id="modalTitle"></h2><p><span class="modal-old-price" id="modalOldPrice"></span></p><p class="modal-price" id="modalPrice"></p><div class="modal-sizes" id="modalSizes"></div><p id="modalColors"></p><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
+<div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close" onclick="closeModal()">&times;</span><div id="modalGallery"></div><button class="arrow left" onclick="prevSlide()">❮</button><button class="arrow right" onclick="nextSlide()">❯</button></div><div class="modal-body"><h2 id="modalTitle"></h2><div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span> <span id="modalPrice"></span></div><div class="info-tag"><strong>Sizes:</strong> <div id="modalSizes"></div></div><div class="info-tag"><strong>Colors:</strong> <span id="modalColors"></span></div><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
 
 <div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #28a745; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;"><h4 style="margin: 0 10px; color: #28a745;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea></div>
-
 <div class="cod-box"><h4>💵 Payment: Cash On Delivery</h4><p>Parcel milne ke baad rider ko payment karein. Koi advance nahi.</p></div>
 <div class="delivery-info"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
-
 <div class="btn-group">
   <button class="modal-btn" onclick="checkoutCart()">📱 Place Order</button>
-  <button class="modal-btn" onclick="clearCart()" style="background:#c62828; margin-top:10px;">❌ Cancel Order</button>
+  <button class="modal-btn" onclick="clearCart()" style="background:#c62828; margin-top:10px;">❌ Clear Cart</button>
   <button class="modal-btn" onclick="cancelOrder()" style="background:#ff9800; margin-top:10px;">↩️ Cancel Last Order</button>
 </div></div></div>
 
@@ -152,118 +153,60 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <script>
 let cart = [];
-let lastOrderId = ""; // NAYA: Last order ID save karne ke liye
+let lastOrderId = "";
+let currentProduct = {};
+let slideImages = [];
+let currentSlide = 0;
 
-function generateOrderId() {
-  return "AP-" + Math.floor(Math.random() * 9000 + 1000);
+function generateOrderId() { return "AP-" + Math.floor(Math.random() * 9000 + 1000); }
+
+function openModal(title, img, oldPrice, newPrice, sizes, colors, productName) {
+  document.getElementById("productModal").style.display = "block";
+  document.body.style.overflow = "hidden";
+  currentProduct = {title, oldPrice, newPrice, sizes, colors, productName};
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
+  document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
+  slideImages = img.split(',').map(i => `https://asifpro78.github.io/Asifpro/${i.trim()}`);
+  currentSlide = 0; showSlide();
+  let sizeHtml = '';
+  sizes.split(',').forEach(s => { sizeHtml += `<span class="size size-selectable" onclick="selectSize(this)">${s.trim()}</span>` });
+  document.getElementById("modalSizes").innerHTML = sizeHtml;
+  document.getElementById("modalColors").innerText = colors;
+  document.getElementById("modalBtnCart").onclick = () => addToCartFromModal();
 }
-
+function closeModal() { document.getElementById("productModal").style.display = "none"; document.body.style.overflow = "auto"; }
+function showSlide() { document.getElementById("modalGallery").innerHTML = slideImages.map((src, index) => `<img src="${src}" style="display: ${index === currentSlide ? 'block' : 'none'}">`).join(''); }
+function nextSlide() { currentSlide = (currentSlide + 1) % slideImages.length; showSlide(); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length; showSlide(); }
 function selectSize(el) {document.querySelectorAll('.size-selectable').forEach(s => s.classList.remove('active'));el.classList.add('active');}
+function addToCartFromModal() {
+  let selectedSize = document.querySelector('.size-selectable.active');
+  if(!selectedSize){ alert("Please Size select karein"); return; }
+  cart.push({title: currentProduct.title, size: selectedSize.innerText, price: currentProduct.newPrice});
+  updateCartBar(); alert(`${currentProduct.title} - Size ${selectedSize.innerText} Cart me add ho gaya`); closeModal();
+}
 function updateCartBar() {document.getElementById("cartCount").innerText = cart.length;document.getElementById("cartBar").style.display = cart.length > 0? 'block' : 'none';}
 function openCart() {document.getElementById("cartModal").style.display = "block";document.body.style.overflow = 'hidden';let html = '';if(cart.length==0){html='<p>Cart khali hai</p>';}else{cart.forEach((item,i)=>{html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:5px;">Remove</button></div>`;});}document.getElementById("cartItems").innerHTML = html;}
 function closeCart() {document.getElementById("cartModal").style.display = "none";document.body.style.overflow = 'auto';}
 function removeCart(i) {cart.splice(i,1);updateCartBar();openCart();}
-
+function clearCart(){cart=[];updateCartBar();openCart();}
 function checkoutCart() {
   if(cart.length==0){alert("Cart khali hai");return;}
   let name = document.getElementById("custName").value;let phone = document.getElementById("custPhone").value;let address = document.getElementById("custAddress").value;
   if(name == "" || phone == "" || address == ""){alert("Please Naam, Phone aur Address fill karein");return;}
-
-  // NAYA: Order ID generate
   lastOrderId = generateOrderId();
-
   let total = 210;let msg = "Assalamualaikum Asifpro%0ANEW ORDER - AZADI SALE%0A%0A";
-  msg += `*Order ID: ${lastOrderId}*%0A%0A`; // NAYA
+  msg += `*Order ID: ${lastOrderId}*%0A%0A`;
   msg += `*Customer Details:*%0A`;msg += `Naam: ${name}%0A`;msg += `Phone: ${phone}%0A`;msg += `Address: ${address}%0A%0A`;
-  msg += `*Order Details:*%0A`;cart.forEach(item=>{msg+=`• ${item.title} | Size: ${item.size} | Rs: ${item.price}%0A`;total += parseInt(item.price);});
-  msg+=`%0ADelivery: Rs 210%0ATotal: Rs ${total}%0A`;msg+=`%0APayment: Cash On Delivery%0APlease confirm order. Shukriya!`;
-
+  msg+=`%0ADelivery: Rs 210%0ATotal: Rs ${total}%0A`;
+  msg+=`%0APayment: Cash On Delivery%0APlease confirm order. Shukriya!`;
   window.open(`https://wa.me/923052305245?text=${msg}`);
-
-  // NAYA: Customer ko ID alert
-  alert(`✅ Order Place ho gaya!\n\nAapki Order ID: ${lastOrderId}\nIs ID ko save kar lein. Cancel karwana ho to isi ID se request karein.`);
-
-  cart = [];document.getElementById("custName").value = "";document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();
+  alert(`✅ Order Place ho gaya!\n\nAapki Order ID: ${lastOrderId}\nIs ID ko save kar lein.`);
+  cart = [];document.getElementById("custName").value = "";
+  document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();
 }
-
-function createCard(p) {
-  const div = document.createElement("div");
-  div.className = "card";
-  div.setAttribute("data-category", p.category);
-  div.onclick = () => openModal(p.title, p.img, p.oldPrice, p.newPrice, p.sizes, p.colors); // YE LINE CHANGE KI
-  div.innerHTML = `
-    <img src="https://asifpro78.github.io/Asifpro/${p.img.split(',')[0]}">
-    <div class="title">${p.title}</div>
-    <div class="price"><s>Rs. ${p.oldPrice}</s> Rs. ${p.newPrice} <span class="save">SAVE ${p.oldPrice - p.newPrice}</span></div>
-    <div class="sizes"><strong>Sizes:</strong> ${p.sizes.split(',').map(s => `<span>${s.trim()}</span>`).join('')}</div>
-    <div class="colors"><strong>Colors:</strong> ${p.colors}</div>
-    <a class="btn" href="https://wa.me/923001234567?text=I want to order ${encodeURIComponent(p.title)}" target="_blank">🛒 Order Now - Azadi Offer</a>
-  `;
-  return div;
-}
-}
-
-function     cancelOrder() {
-      document.getElementById('orderPopup').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
-    }
-
-    // === MODAL CODE START ===
-    
-</bod<!-- PRODUCT MODAL -->
-<div id="productModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <div class="modal-gallery" id="modalGallery"></div>
-    <button class="arrow left" onclick="prevSlide()">❮</button>
-    <button class="arrow right" onclick="nextSlide()">❯</button>
-    <div class="price"><s id="modalOldPrice"></s> <span id="modalPrice"></span></div>
-    <div><strong>Sizes:</strong> <div id="modalSizes"></div></div>
-    <div><strong>Colors:</strong> <span id="modalColors"></span></div>
-    <a class="btn" id="modalOrderBtn" target="_blank">🛒 Order on WhatsApp</a>
-  </div>
-</div>
-
-<script>
-let slideImages = [];
-let currentSlide = 0;
-
-function openModal(title, img, oldPrice, newPrice, sizes, colors) {
-  document.getElementById("productModal").style.display = "flex";
-  document.body.style.overflow = "hidden";
-  document.getElementById("modalTitle").innerText = title;
-  document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
-  document.getElementById("modalPrice").innerText = "Rs. " + newPrice + " - 20% OFF";
-
-  slideImages = img.split(',').map(i => `https://asifpro78.github.io/Asifpro/${i.trim()}`);
-  currentSlide = 0;
-  document.getElementById("modalGallery").innerHTML = `<img src="${slideImages[0]}">`;
-
-  let sizeHtml = '';
-  sizes.split(',').forEach(s => { sizeHtml += `<span class="size" onclick="this.classList.toggle('active')">${s.trim()}</span>` });
-  document.getElementById("modalSizes").innerHTML = sizeHtml;
-  document.getElementById("modalColors").innerText = colors;
-  
-  document.getElementById("modalOrderBtn").href = `https://wa.me/923001234567?text=I want to order ${encodeURIComponent(title)}`;
-}
-
-function closeModal() {
-  document.getElementById("productModal").style.display = "none";
-  document.body.style.overflow = "auto";
-}
-
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slideImages.length;
-  document.getElementById("modalGallery").innerHTML = `<img src="${slideImages[currentSlide]}">`;
-}
-
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length;
-  document.getElementById("modalGallery").innerHTML = `<img src="${slideImages[currentSlide]}">`;
-}
-<script>
-// yahan upar wala pura modal wala script hoga
+function cancelOrder() { if(lastOrderId == ""){alert("Abhi tak koi order nahi kiya");} else { window.open(`https://wa.me/923052305245?text=Cancel Order Request%0AOrder ID: ${lastOrderId}`); } }
 </script>
 </body>
 </html>
