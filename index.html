@@ -33,8 +33,18 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .cod-box h4 { margin: 0 0 5px; color: #28a745; }
 .delivery-info { background: #f2f2f2; border-left: 4px solid #28a745; padding: 12px; border-radius: 8px; margin: 10px 0; text-align: left;}
 .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px; padding: 8px 12px; cursor: pointer; z-index: 1001; border-radius: 50%; }
-.arrow.left { left: 15px; } 
+.arrow.left { left: 15px; }
 .arrow.right { right: 15px; }
+
+/* CARGO SLIDER CSS */
+.cargo-slider { position: relative; width: 100%; height: 250px; overflow: hidden; }
+.cargo-slider img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.cargo-slider img.active { display: block; }
+.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 20px; padding: 8px 12px; cursor: pointer; border-radius: 50%; z-index: 10; }
+.slider-btn.left { left: 10px; }
+.slider-btn.right { right: 10px; }
+.color-tag { background: #25D366; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; margin: 3px; display: inline-block; }
+
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; padding-bottom: 70px;}.item { width: 100%; }.modal-content{margin: 10px auto; border-radius: 10px;} #modalGallery img {height: 35vh;}.modal-body {padding: 15px;}.modal-body h2 {font-size: 20px;}}
 </style>
@@ -56,14 +66,14 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div class="contact-card">
   <h2>🔥 Azadi Special Collection</h2>
-  
-  <!-- JACKETS ALAG -->
+
+  <!-- JACKETS -->
   <div class="section-title">🧥 Denim Jackets</div>
   <div class="gallery">
     <div class="item">
       <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', '3000', '2400', 'S,M,L,XL', 'Blue, Vintage Wash', 'Classic Denim Jacket')">
       <div class="item-content">
-        <h3>Classic Denim Jacket</h3>
+        <h3>CLASSIC DENIM JACKET</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2400 <span class="save-tag">SAVE 600</span></div></div>
         <p><b>Sizes:</b> <span class="size">S</span> <span class="size">M</span> <span class="size">L</span> <span class="size">XL</span></p>
         <p><b>Colors:</b> Blue, Vintage Wash</p>
@@ -72,39 +82,23 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
     </div>
   </div>
 
-  <!-- CARGO AIK JAGA -->
+  <!-- CARGO AIK JAGA 3 PICTURES SLIDER -->
   <div class="section-title">👖 Cargo Pants Collection</div>
   <div class="gallery">
-    <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/Pants2.jpg" alt="Camo Cargo Pants" onclick="openModal('Camo Cargo Pants', 'Pants2.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo', 'Camo Cargo Pants')">
-      <div class="item-content">
-        <h3>Camo Cargo Pants</h3>
-        <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
-        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
-        <p><b>Color:</b> Camo</p>
-        <button class="btn btn-order" onclick="openModal('Camo Cargo Pants', 'Pants2.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo', 'Camo Cargo Pants')">🛒 Order Now - Azadi Offer</button>
+    <div class="item" style="width: 100%; max-width: 500px;">
+      <div class="cargo-slider" id="cargoSlider">
+        <img src="https://asifpro78.github.io/Asifpro/Pants2.jpg" class="active" alt="Camo Cargo">
+        <img src="https://asifpro78.github.io/Asifpro/Pants1.jpg" alt="Navy Cargo">
+        <img src="https://asifpro78.github.io/Asifpro/Pants3.jpg" alt="Beige Cargo">
+        <button class="slider-btn left" onclick="prevCargoSlide()">❮</button>
+        <button class="slider-btn right" onclick="nextCargoSlide()">❯</button>
       </div>
-    </div>
-
-    <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/Pants1.jpg" alt="Navy Blue Cargo Pants" onclick="openModal('Navy Blue Cargo Pants', 'Pants1.jpg', '3000', '2500', '28,30,32,34,36,38', 'Navy Blue', 'Navy Blue Cargo Pants')">
       <div class="item-content">
-        <h3>Navy Blue Cargo Pants</h3>
+        <h3>PREMIUM CARGO PANTS</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
+        <p><b>Available Colors:</b> <span class="color-tag">Camo</span> <span class="color-tag">Navy Blue</span> <span class="color-tag">Beige</span></p>
         <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
-        <p><b>Color:</b> Navy Blue</p>
-        <button class="btn btn-order" onclick="openModal('Navy Blue Cargo Pants', 'Pants1.jpg', '3000', '2500', '28,30,32,34,36,38', 'Navy Blue', 'Navy Blue Cargo Pants')">🛒 Order Now - Azadi Offer</button>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/Pants3.jpg" alt="Beige Cargo Pants" onclick="openModal('Beige Cargo Pants', 'Pants3.jpg', '3000', '2500', '28,30,32,34,36,38', 'Beige', 'Beige Cargo Pants')">
-      <div class="item-content">
-        <h3>Beige Cargo Pants</h3>
-        <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
-        <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
-        <p><b>Color:</b> Beige</p>
-        <button class="btn btn-order" onclick="openModal('Beige Cargo Pants', 'Pants3.jpg', '3000', '2500', '28,30,32,34,36,38', 'Beige', 'Beige Cargo Pants')">🛒 Order Now - Azadi Offer</button>
+        <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants2.jpg,Pants1.jpg,Pants3.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo, Navy Blue, Beige', 'Premium Cargo Pants')">🛒 Order Now - Azadi Offer</button>
       </div>
     </div>
   </div>
@@ -145,8 +139,26 @@ let lastOrderId = "";
 let currentProduct = {};
 let slideImages = [];
 let currentSlide = 0;
+let cargoSlide = 0;
 
 function generateOrderId() { return "AP-" + Math.floor(Math.random() * 9000 + 1000); }
+
+// CARGO SLIDER FUNCTION
+function showCargoSlide() {
+  let slides = document.querySelectorAll('#cargoSlider img');
+  slides.forEach((img, i) => { img.classList.remove('active'); });
+  slides[cargoSlide].classList.add('active');
+}
+function nextCargoSlide() {
+  let slides = document.querySelectorAll('#cargoSlider img');
+  cargoSlide = (cargoSlide + 1) % slides.length;
+  showCargoSlide();
+}
+function prevCargoSlide() {
+  let slides = document.querySelectorAll('#cargoSlider img');
+  cargoSlide = (cargoSlide - 1 + slides.length) % slides.length;
+  showCargoSlide();
+}
 
 function openModal(title, img, oldPrice, newPrice, sizes, colors, productName) {
   document.getElementById("productModal").style.display = "block";
@@ -164,7 +176,7 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors, productName) {
   document.getElementById("modalBtnCart").onclick = () => addToCartFromModal();
 }
 function closeModal() { document.getElementById("productModal").style.display = "none"; document.body.style.overflow = "auto"; }
-function showSlide() { document.getElementById("modalGallery").innerHTML = slideImages.map((src, index) => `<img src="${src}" style="display: ${index === currentSlide ? 'block' : 'none'}">`).join(''); }
+function showSlide() { document.getElementById("modalGallery").innerHTML = slideImages.map((src, index) => `<img src="${src}" style="display: ${index === currentSlide? 'block' : 'none'}">`).join(''); }
 function nextSlide() { currentSlide = (currentSlide + 1) % slideImages.length; showSlide(); }
 function prevSlide() { currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length; showSlide(); }
 function selectSize(el) {document.querySelectorAll('.size-selectable').forEach(s => s.classList.remove('active'));el.classList.add('active');}
@@ -199,4 +211,4 @@ function checkoutCart() {
 function cancelOrder() { if(lastOrderId == ""){alert("Abhi tak koi order nahi kiya");} else { window.open(`https://wa.me/923052305245?text=Cancel Order Request%0AOrder ID: ${lastOrderId}`); } }
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </html>
