@@ -35,14 +35,6 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px; padding: 8px 12px; cursor: pointer; z-index: 1001; border-radius: 50%; }
 .arrow.left { left: 15px; }
 .arrow.right { right: 15px; }
-
-/* CARGO SLIDER CSS */
-.cargo-slider { position: relative; width: 100%; height: 250px; overflow: hidden; }
-.cargo-slider img { width: 100%; height: 100%; object-fit: cover; display: none; }
-.cargo-slider img.active { display: block; }
-.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 20px; padding: 8px 12px; cursor: pointer; border-radius: 50%; z-index: 10; }
-.slider-btn.left { left: 10px; }
-.slider-btn.right { right: 10px; }
 .color-tag { background: #25D366; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; margin: 3px; display: inline-block; }
 
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
@@ -82,17 +74,10 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
     </div>
   </div>
 
-  <!-- CARGO AIK JAGA 3 PICTURES SLIDER -->
-  <div class="section-title">👖 Cargo Pants Collection</div>
+  <!-- CARGO - HEADING HATA DI, SLIDER MODAL ME HAI -->
   <div class="gallery">
     <div class="item" style="width: 100%; max-width: 500px;">
-      <div class="cargo-slider" id="cargoSlider">
-        <img src="https://asifpro78.github.io/Asifpro/Pants2.jpg" class="active" alt="Camo Cargo">
-        <img src="https://asifpro78.github.io/Asifpro/Pants1.jpg" alt="Navy Cargo">
-        <img src="https://asifpro78.github.io/Asifpro/Pants3.jpg" alt="Beige Cargo">
-        <button class="slider-btn left" onclick="prevCargoSlide()">❮</button>
-        <button class="slider-btn right" onclick="nextCargoSlide()">❯</button>
-      </div>
+      <img src="https://asifpro78.github.io/Asifpro/Pants2.jpg" alt="Premium Cargo Pants" onclick="openModal('Premium Cargo Pants', 'Pants2.jpg,Pants1.jpg,Pants3.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo, Navy Blue, Beige', 'Premium Cargo Pants')">
       <div class="item-content">
         <h3>PREMIUM CARGO PANTS</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
@@ -128,7 +113,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 <div class="btn-group">
   <button class="modal-btn" onclick="checkoutCart()">📱 Place Order</button>
   <button class="modal-btn" onclick="clearCart()" style="background:#c62828; margin-top:10px;">❌ Clear Cart</button>
-  <button class="modal-btn" onclick="cancelOrder()" style="background:#ff9800; margin-top:10px;">↩️ Cancel Last Order</button>
+  <button class="btn btn-order" onclick="cancelOrder()" style="background:#ff9800; margin-top:10px;">↩️ Cancel Last Order</button>
 </div></div></div>
 
 <div id="cartBar" class="cart-bar" onclick="openCart()">🛒 Cart: <span id="cartCount">0</span> items - Order Now</div>
@@ -139,26 +124,8 @@ let lastOrderId = "";
 let currentProduct = {};
 let slideImages = [];
 let currentSlide = 0;
-let cargoSlide = 0;
 
 function generateOrderId() { return "AP-" + Math.floor(Math.random() * 9000 + 1000); }
-
-// CARGO SLIDER FUNCTION
-function showCargoSlide() {
-  let slides = document.querySelectorAll('#cargoSlider img');
-  slides.forEach((img, i) => { img.classList.remove('active'); });
-  slides[cargoSlide].classList.add('active');
-}
-function nextCargoSlide() {
-  let slides = document.querySelectorAll('#cargoSlider img');
-  cargoSlide = (cargoSlide + 1) % slides.length;
-  showCargoSlide();
-}
-function prevCargoSlide() {
-  let slides = document.querySelectorAll('#cargoSlider img');
-  cargoSlide = (cargoSlide - 1 + slides.length) % slides.length;
-  showCargoSlide();
-}
 
 function openModal(title, img, oldPrice, newPrice, sizes, colors, productName) {
   document.getElementById("productModal").style.display = "block";
@@ -211,4 +178,4 @@ function checkoutCart() {
 function cancelOrder() { if(lastOrderId == ""){alert("Abhi tak koi order nahi kiya");} else { window.open(`https://wa.me/923052305245?text=Cancel Order Request%0AOrder ID: ${lastOrderId}`); } }
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </html>
+</html>
