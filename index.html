@@ -96,7 +96,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close" onclick="closeModal()">&times;</span><div id="modalGallery"></div><button class="arrow left" onclick="prevSlide()">❮</button><button class="arrow right" onclick="nextSlide()">❯</button></div><div class="modal-body"><h2 id="modalTitle"></h2><div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span> <span id="modalPrice"></span></div><div class="info-tag"><strong>1. Select Size:</strong> <div id="modalSizes"></div></div><div class="info-tag"><strong>2. Select Color:</strong> <div id="modalColors"></div></div><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
 
-<!-- COMPACT CART MODAL FULL SCREEN -->
+<!-- UPDATED CART MODAL -->
 <div id="cartModal" class="modal"><div class="modal-content" style="display: flex; flex-direction: column; height: 100vh;">
   <div class="modal-header" style="background: #28a745; color: white; padding: 12px 15px; border-radius: 0; position: sticky; top: 0; z-index: 10; flex-shrink: 0;">
     <h2 style="margin:0; color:white; font-size:18px;">🛒 Your Cart</h2>
@@ -106,23 +106,23 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
   <div style="flex: 1; overflow-y: auto; padding: 10px 12px;">
     <div id="cartItems"></div>
     
-    <!-- COMPACT DELIVERY FORM -->
+    <!-- DELIVERY FORM UPDATED -->
     <div style="background: #f2f2f2; padding: 10px; border-radius: 8px; margin: 8px 0;">
       <h4 style="margin: 0 0 6px; color: #28a745; font-size: 14px;">📦 Delivery Details</h4>
-      <input type="text" id="custName" placeholder="Full Name *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
-      <input type="tel" id="custPhone" placeholder="Phone *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
-      <textarea id="custAddress" placeholder="Address *" rows="2" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;"></textarea>
+      <input type="text" id="custName" placeholder="Full Name *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
+      <input type="tel" id="custPhone" placeholder="Phone *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
+      <!-- ADDRESS 1 LINE BARA -->
+      <input type="text" id="custAddress" placeholder="Complete Address * House #, Street, Area" required style="width: 95%; padding: 14px 10px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; min-height: 45px; box-sizing: border-box;">
     </div>
     
-    <!-- 2 CHOTI LINES -->
-    <p style="margin: 5px 0; font-size: 12px;"><b>💵 Payment:</b> Cash On Delivery</p>
-    <p style="margin: 5px 0; font-size: 12px;"><b>🚚 Delivery:</b> Rs. 300 → <b style="color:#28a745;">Rs. 210</b></p>
+    <!-- PAYMENT DELIVERY 8px -->
+    <p style="margin: 5px 0; font-size: 8px; color: #333;"><b>💵 Payment:</b> Cash On Delivery</p>
+    <p style="margin: 5px 0; font-size: 8px; color: #333;"><b>🚚 Delivery:</b> Rs. 300 → <b style="color:#28a745;">Rs. 210</b></p>
 
+    <!-- BUTTON NICHE -->
+    <button class="modal-btn" style="padding: 14px; font-size: 16px; margin-top: 15px;" onclick="checkoutCart()">📱 Place Order on WhatsApp</button>
   </div>
   
-  <div style="padding: 10px 12px; flex-shrink: 0; border-top: 1px solid #ddd; background: white;">
-    <button class="modal-btn" style="padding: 12px; font-size: 16px;" onclick="checkoutCart()">📱 Place Order on WhatsApp</button>
-  </div>
 </div></div>
 
 <!-- IMAGE ZOOM MODAL -->
@@ -235,4 +235,4 @@ function checkoutCart() {
 }
 </script>
 </body>
-</html>
+        </html>
