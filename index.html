@@ -36,8 +36,10 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .modal-content { background-color: #fff; margin: 0; padding: 0; border-radius: 0; width: 100%; max-width: 100%; text-align: left; animation: zoom 0.3s; height: 100vh; overflow-y: auto; }
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 8px; right: 12px; color: white; font-size: 30px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 35px; height: 35px; line-height: 33px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
-#modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 0;flex-shrink: 0;scroll-snap-align: start; cursor: zoom-in;} /* Yahan cursor add kiya */
+#modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 0;flex-shrink: 0;scroll-snap-align: start; cursor: zoom-in;}
 .modal-body { padding: 15px; }.modal-body h2 { margin: 0 0 8px; color: #111; font-size: 20px; }.modal-price { color: #28a745; font-size: 20px; font-weight: bold; margin: 8px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 8px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 8px; }.info-tag { background: #f2f2f2; padding: 10px; border-radius: 8px; margin: 6px 0; font-size: 14px; text-align: left; font-weight: 600; }.azadi-tag { background: #FFD700; color: #111; font-weight: bold; text-align: center; border: 1px solid #111; font-size: 13px;}
+
+/* CART MODAL FULL SCREEN FIX */
 .cart-item { background: #f2f2f2; padding: 10px; margin: 6px 0; border-radius: 8px; text-align: left; font-size: 14px; }
 .cod-box { background: #d4edda; border: 2px solid #28a745; padding: 12px; border-radius: 10px; margin: 8px 0; text-align: left; font-size: 14px;}
 .cod-box h4 { margin: 0 0 4px; color: #28a745; font-size: 15px;}
@@ -46,7 +48,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .arrow.left { left: 12px; }
 .arrow.right { right: 12px; }
 
-/* NEW: FULL IMAGE ZOOM MODAL */
+/* FULL IMAGE ZOOM MODAL */
 #imageZoomModal {display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); cursor: zoom-out;}
 #imageZoomModal img {margin: auto; display: block; width: 100%; height: 100%; object-fit: contain; animation: zoom 0.3s;}
 #imageZoomModal .close-zoom {position: absolute; top: 15px; right: 25px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;}
@@ -98,12 +100,31 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close" onclick="closeModal()">&times;</span><div id="modalGallery"></div><button class="arrow left" onclick="prevSlide()">❮</button><button class="arrow right" onclick="nextSlide()">❯</button></div><div class="modal-body"><h2 id="modalTitle"></h2><div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span> <span id="modalPrice"></span></div><div class="info-tag"><strong>1. Select Size:</strong> <div id="modalSizes"></div></div><div class="info-tag"><strong>2. Select Color:</strong> <div id="modalColors"></div></div><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
 
-<div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #28a745; color: white; padding: 12px; border-radius: 0;"><h2 style="margin:0; color:white; font-size:18px;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 12px; border-radius: 10px; margin: 8px 0; text-align: left;"><h4 style="margin: 0 8px; color: #28a745; font-size: 15px;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Your Full Name *" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;"><textarea id="custAddress" placeholder="Complete Delivery Address *" rows="2" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;"></textarea></div>
-<div class="cod-box"><h4>💵 Payment: Cash On Delivery</h4><p>Pay to the rider when you receive the parcel. No advance payment.</p></div>
-<div class="delivery-info"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
-<div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 Place Order on WhatsApp</button></div></div></div>
+<!-- CART MODAL FULL SCREEN -->
+<div id="cartModal" class="modal"><div class="modal-content">
+  <div class="modal-header" style="background: #28a745; color: white; padding: 15px; border-radius: 0; position: sticky; top: 0; z-index: 10;">
+    <h2 style="margin:0; color:white; font-size:20px;">🛒 Your Cart</h2>
+    <span class="modal-close" onclick="closeCart()">&times;</span>
+  </div>
+  <div class="modal-body" id="cartItems" style="padding-bottom: 100px;"></div>
+  
+  <div style="background: #f2f2f2; padding: 12px; border-radius: 10px; margin: 8px 12px; text-align: left;">
+    <h4 style="margin: 0 0 8px; color: #28a745; font-size: 15px;">📦 Delivery Details</h4>
+    <input type="text" id="custName" placeholder="Your Full Name *" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;">
+    <input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;">
+    <textarea id="custAddress" placeholder="Complete Delivery Address *" rows="2" required style="width: 95%; padding: 10px; margin: 4px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;"></textarea>
+  </div>
+  
+  <div class="cod-box" style="margin: 8px 12px;"><h4>💵 Payment: Cash On Delivery</h4><p>Pay to the rider when you receive the parcel. No advance payment.</p></div>
+  
+  <div class="delivery-info" style="margin: 8px 12px;"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
+  
+  <div class="btn-group" style="padding: 10px 12px;">
+    <button class="modal-btn" onclick="checkoutCart()">📱 Place Order on WhatsApp</button>
+  </div>
+</div></div>
 
-<!-- NEW: IMAGE ZOOM MODAL -->
+<!-- IMAGE ZOOM MODAL -->
 <div id="imageZoomModal">
   <span class="close-zoom" onclick="closeImageZoom()">&times;</span>
   <img id="zoomedImage">
@@ -149,7 +170,6 @@ function showSlide() {
 function nextSlide() { currentSlide = (currentSlide + 1) % slideImages.length; showSlide(); }
 function prevSlide() { currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length; showSlide(); }
 
-// NEW FUNCTIONS FOR IMAGE ZOOM
 function openImageZoom(src) {
   document.getElementById("imageZoomModal").style.display = "block";
   document.getElementById("zoomedImage").src = src;
@@ -185,7 +205,7 @@ function openCart() {
   document.getElementById("cartModal").style.display = "block";
   document.body.style.overflow = 'hidden';
   let html = '';let subtotal=0;
-  if(cart.length==0){html='<p>Your cart is empty</p>';}
+  if(cart.length==0){html='<p style="text-align:center; padding:20px;">Your cart is empty</p>';}
   else{
     cart.forEach((item,i)=>{
       subtotal += item.price;
@@ -214,4 +234,4 @@ function checkoutCart() {
 }
 </script>
 </body>
-</html>
+    </html>
