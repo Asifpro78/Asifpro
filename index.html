@@ -64,22 +64,22 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
   <div class="section-title">🧥 Denim Jackets</div>
   <div class="gallery">
     <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', '3000', '2400', 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">
+      <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">
       <div class="item-content">
         <h3>CLASSIC DENIM JACKET</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2400 <span class="save-tag">SAVE 600</span></div></div>
-        <button class="btn btn-order" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', '3000', '2400', 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">🛒 Add to Cart</button>
+        <button class="btn btn-order" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">🛒 Add to Cart</button>
       </div>
     </div>
   </div>
 
 <div class="gallery">
   <div class="item" style="width: 100%; max-width: 500px;">
-    <img src="https://asifpro78.github.io/Asifpro/Pants.jpg" alt="Premium Cargo Pants" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">
+    <img src="https://asifpro78.github.io/Asifpro/Pants.jpg" alt="Premium Cargo Pants" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">
     <div class="item-content">
       <h3>PREMIUM CARGO PANTS</h3>
       <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
-      <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">🛒 Add to Cart</button>
+      <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">🛒 Add to Cart</button>
     </div>
   </div>
 </div>
@@ -93,7 +93,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 <div id="cartModal" class="modal"><div class="modal-content"><div class="modal-header" style="background: #28a745; color: white; padding: 15px; border-radius: 15px 15px 0 0;"><h2 style="margin:0; color:white;">🛒 Your Cart</h2><span class="modal-close" onclick="closeCart()">&times;</span></div><div class="modal-body" id="cartItems"></div><div style="background: #f2f2f2; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: left;"><h4 style="margin: 0 10px; color: #28a745;">📦 Delivery Details</h4><input type="text" id="custName" placeholder="Apka Naam *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><input type="tel" id="custPhone" placeholder="Phone Number *" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"><textarea id="custAddress" placeholder="Mukammal Address *" rows="3" required style="width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px;"></textarea></div>
 <div class="cod-box"><h4>💵 Payment: Cash On Delivery</h4><p>Parcel milne ke baad rider ko payment karein. Koi advance nahi.</p></div>
 <div class="delivery-info"><h4>🚚 Delivery Charges</h4><p>Regular: <s>Rs. 300</s> <b style="color:#28a745;">Azadi Sale: Rs. 210</b></p></div>
-<div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 WhatsApp Par Order Bhejein</button></div>
+<div class="btn-group"><button class="modal-btn" onclick="checkoutCart()">📱 WhatsApp Par Order Bhejein</button></div></div></div>
 
 <div id="cartBar" class="cart-bar" onclick="openCart()">🛒 Cart: <span id="cartCount">0</span> items - Checkout Karein</div>
 
@@ -146,23 +146,45 @@ function addToCartFromModal() {
   cart.push({title: currentProduct.title, size: selectedSize, color: selectedColor, price: currentProduct.newPrice});
   updateCartBar(); alert(`${currentProduct.title}\nSize: ${selectedSize}\nColor: ${selectedColor}\nCart me add ho gaya`); closeModal();
 }
-function updateCartBar() {document.getElementById("cartCount").innerText = cart.length;document.getElementById("cartBar").style.display = cart.length > 0? 'block' : 'none';}
-function openCart() {document.getElementById("cartModal").style.display = "block";document.body.style.overflow = 'hidden';let html = '';let total=210;if(cart.length==0){html='<p>Cart khali hai</p>';}else{cart.forEach((item,i)=>{total+=parseInt(item.price);html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:5px;">Remove</button></div>`;});html+=`<div style="font-weight:bold; margin-top:10px;">Subtotal: Rs. ${total-210}</div><div style="font-weight:bold;">Delivery: Rs. 210</div><div style="font-weight:bold; font-size:18px; color:#28a745;">Total: Rs. ${total}</div>`;}document.getElementById("cartItems").innerHTML = html;}
+function updateCartBar() {
+  document.getElementById("cartCount").innerText = cart.length;
+  if(cart.length > 0){
+    document.getElementById("cartBar").style.display = 'block';
+  } else {
+    document.getElementById("cartBar").style.display = 'none';
+  }
+}
+function openCart() {
+  document.getElementById("cartModal").style.display = "block";
+  document.body.style.overflow = 'hidden';
+  let html = '';let subtotal=0;
+  if(cart.length==0){html='<p>Cart khali hai</p>';}
+  else{
+    cart.forEach((item,i)=>{
+      subtotal += item.price;
+      html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:5px;">Remove</button></div>`;
+    });
+    let total = subtotal + 210;
+    html+=`<div style="font-weight:bold; margin-top:10px;">Subtotal: Rs. ${subtotal}</div><div style="font-weight:bold;">Delivery: Rs. 210</div><div style="font-weight:bold; font-size:18px; color:#28a745;">Total: Rs. ${total}</div>`;
+  }
+  document.getElementById("cartItems").innerHTML = html;
+}
 function closeCart() {document.getElementById("cartModal").style.display = "none";document.body.style.overflow = 'auto';}
 function removeCart(i) {cart.splice(i,1);updateCartBar();openCart();}
 function checkoutCart() {
   if(cart.length==0){alert("Cart khali hai");return;}
   let name = document.getElementById("custName").value;let phone = document.getElementById("custPhone").value;let address = document.getElementById("custAddress").value;
   if(name == "" || phone == "" || address == ""){alert("Please Naam, Phone aur Address fill karein");return;}
-  let total = 210;let msg = "Assalamualaikum Asifpro%0A*NEW ORDER - AZADI SALE*%0A%0A";
+  let subtotal = 0;let msg = "Assalamualaikum Asifpro%0A*NEW ORDER - AZADI SALE*%0A%0A";
   msg += `*Customer Details:*%0A`;msg += `Naam: ${name}%0A`;msg += `Phone: ${phone}%0A`;msg += `Address: ${address}%0A%0A`;
   msg += `*Order Items:*%0A`;
-  cart.forEach(item => { msg += `- ${item.title} | Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}%0A`; total+=parseInt(item.price); });
-  msg+=`%0ADelivery: Rs 210%0A*Total: Rs ${total}*%0A`;
+  cart.forEach(item => { msg += `- ${item.title} | Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}%0A`; subtotal+=item.price; });
+  let total = subtotal + 210;
+  msg+=`%0ASubtotal: Rs ${subtotal}%0ADelivery: Rs 210%0A*Total: Rs ${total}*%0A`;
   msg+=`%0APayment: Cash On Delivery%0APlease confirm order. Shukriya!`;
   window.open(`https://wa.me/923052305245?text=${msg}`);
   cart = [];document.getElementById("custName").value = "";document.getElementById("custPhone").value = "";document.getElementById("custAddress").value = "";updateCartBar();closeCart();alert("✅ Order WhatsApp pe bhej diya gaya!");
 }
 </script>
 </body>
-  </html>
+</html>
