@@ -123,7 +123,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <script>
 let cart = [];
-let currentProduct = {};
+let tempTitle = ""; // NAYA VARIABLE
 let slideImages = [];
 let currentSlide = 0;
 let selectedSize = '';
@@ -132,7 +132,7 @@ let selectedColor = '';
 function openModal(title, img, oldPrice, newPrice, sizes, colors) {
   document.getElementById("productModal").style.display = "block";
   document.body.style.overflow = "hidden";
-  currentProduct = {title: title, oldPrice: oldPrice, newPrice: newPrice, sizes: sizes, colors: colors}; // YAHAN FIX
+  tempTitle = title; // TITLE SAVE KAR LIYA
   selectedSize = ''; selectedColor = '';
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
@@ -148,7 +148,8 @@ function openModal(title, img, oldPrice, newPrice, sizes, colors) {
   colors.split(',').forEach(c => { colorHtml += `<span class="color-option" onclick="selectColor(this,'${c.trim()}')">${c.trim()}</span>` });
   document.getElementById("modalColors").innerHTML = colorHtml;
   
-  document.getElementById("modalBtnCart").onclick = () => addToCartFromModal();
+  // BUTTON PAR DIRECT TITLE BHEJ DIYA
+  document.getElementById("modalBtnCart").onclick = () => addToCartFromModal(title, newPrice);
 }
 function closeModal() { document.getElementById("productModal").style.display = "none"; document.body.style.overflow = "auto"; }
 function showSlide() { 
@@ -173,11 +174,11 @@ function selectColor(el,color) {
   document.querySelectorAll('#modalColors .color-option').forEach(s => s.classList.remove('active'));
   el.classList.add('active'); selectedColor = color;
 }
-function addToCartFromModal() {
+function addToCartFromModal(title, price) { // TITLE DIRECT LE LIYA
   if(!selectedSize){ alert("Please select a Size first"); return; }
   if(!selectedColor){ alert("Please select a Color first"); return; }
-  cart.push({title: currentProduct.title, size: selectedSize, color: selectedColor, price: currentProduct.newPrice});
-  updateCartBar(); alert(`${currentProduct.title}\nSize: ${selectedSize}\nColor: ${selectedColor}\nAdded to Cart!`); closeModal();
+  cart.push({title: title, size: selectedSize, color: selectedColor, price: price}); // YAHAN FIX
+  updateCartBar(); alert(`${title}\nSize: ${selectedSize}\nColor: ${selectedColor}\nAdded to Cart!`); closeModal();
 }
 function updateCartBar() {
   document.getElementById("cartCount").innerText = cart.length;
