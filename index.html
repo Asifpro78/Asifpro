@@ -15,7 +15,6 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .header img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00ff88; }
 .header h1 {font-size: 24px; margin: 10px 0;}
 .contact-card { background: white; margin: 15px; padding: 15px; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.section-title { font-size: 20px; font-weight: 900; color: #111; background: #d4edda; padding: 12px; border-radius: 10px; margin-bottom: 12px; }
 .btn { display: block; width: 90%; margin: 8px auto; padding: 12px; border: none; border-radius: 10px; color: white; font-size: 16px; cursor: pointer; font-weight: bold; }
 .btn-whatsapp { background: #25D366; }.btn-call { background: #007bff; }.btn-facebook { background: #1877F2; }.btn-insta { background: #E4405F; }.btn-mail { background: #EA4335; word-break: break-all; font-size: 14px;}.btn-order { background: #25D366; font-size: 16px; padding: 12px; margin-top: 8px; width: 95%; }
 .address { margin: 12px 0; font-size: 15px; }.address a { color: #28a745; text-decoration: none; font-weight: bold; }
@@ -25,30 +24,23 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 .item-content { padding: 10px; }
 .item h3 { color: white; margin: 0 0 6px; font-size: 18px; font-weight: 900; text-transform: uppercase; background: #111; padding: 8px; margin: -10px -10px 8px -10px; }
 .price-wrap { margin: 6px 0; }.old-price { text-decoration: line-through; color: #999; font-size: 14px; }.new-price { color: #28a745; font-size: 20px; font-weight: bold; }.save-tag { background: #d4edda; color: #28a745; font-size: 12px; padding: 3px 8px; border-radius: 5px; font-weight: bold; }
-
-/* COMPACT MODAL */
 .size { background: #111; color: white; padding: 8px 14px; border-radius: 8px; display: inline-block; margin: 3px; font-size: 15px; font-weight: 800; cursor: pointer; border: 2px solid transparent; }
 .size.active { background: #25D366; border: 2px solid #25D366; transform: scale(1.05); }
 .color-option { background: #eee; color: #111; padding: 6px 12px; border-radius: 20px; display: inline-block; margin: 3px; font-size: 14px; font-weight: 600; cursor: pointer; }
 .color-option.active { background: #25D366; color: white; }
-
 .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow-y: auto; padding: 0; box-sizing: border-box; }
 .modal-content { background-color: #fff; margin: 0; padding: 0; border-radius: 0; width: 100%; max-width: 100%; text-align: left; animation: zoom 0.3s; height: 100vh; overflow-y: auto; }
 .modal-header { padding: 0; position: relative; }.modal-close { position: absolute; top: 8px; right: 12px; color: white; font-size: 30px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.6); border-radius: 50%; width: 35px; height: 35px; line-height: 33px; text-align: center; z-index: 1000; }
 #modalGallery {display: flex;overflow-x: auto;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch;}
 #modalGallery img {width: 100%;height: 40vh;max-height: 400px;object-fit: cover;border-radius: 0;flex-shrink: 0;scroll-snap-align: start; cursor: zoom-in;}
 .modal-body { padding: 15px; }.modal-body h2 { margin: 0 0 8px; color: #111; font-size: 20px; }.modal-price { color: #28a745; font-size: 20px; font-weight: bold; margin: 8px 0; }.modal-old-price { text-decoration: line-through; color: #999; font-size: 16px; }.modal-btn { background: #25D366; color: white; width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 8px; }.btn-group { position: sticky; bottom: 0; background: white; padding-top: 8px; }.info-tag { background: #f2f2f2; padding: 10px; border-radius: 8px; margin: 6px 0; font-size: 14px; text-align: left; font-weight: 600; }.azadi-tag { background: #FFD700; color: #111; font-weight: bold; text-align: center; border: 1px solid #111; font-size: 13px;}
-
 .cart-item { background: #f2f2f2; padding: 10px; margin: 6px 0; border-radius: 8px; text-align: left; font-size: 14px; }
 .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; font-size: 20px; padding: 6px 10px; cursor: pointer; z-index: 1001; border-radius: 50%; }
 .arrow.left { left: 12px; }
 .arrow.right { right: 12px; }
-
-/* FULL IMAGE ZOOM MODAL */
 #imageZoomModal {display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); cursor: zoom-out;}
 #imageZoomModal img {margin: auto; display: block; width: 100%; height: 100%; object-fit: contain; animation: zoom 0.3s;}
 #imageZoomModal .close-zoom {position: absolute; top: 15px; right: 25px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;}
-
 @keyframes zoom { from {transform: scale(0.8)} to {transform: scale(1)} }
 @media (max-width: 600px) {.page-wrapper { max-width: 100%; box-shadow: none; } body { background: #f2f2f2; padding: 0; padding-bottom: 70px;}.item { width: 100%; }.modal-content{margin: 0; border-radius: 0; height: 100vh;} #modalGallery img {height: 40vh;}.modal-body {padding: 12px;}.modal-body h2 {font-size: 18px;}}
 </style>
@@ -71,30 +63,30 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
   
   <div class="gallery">
     <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">
+      <img src="https://asifpro78.github.io/Asifpro/1.jpg" alt="Classic Denim Jacket" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash')">
       <div class="item-content">
         <h3>CLASSIC DENIM JACKET</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2400 <span class="save-tag">SAVE 600</span></div></div>
-        <button class="btn btn-order" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash', 'Classic Denim Jacket')">🛒 Add to Cart</button>
+        <button class="btn btn-order" onclick="openModal('Classic Denim Jacket', '1.jpg,Jacket2.jpg', 3000, 2400, 'S,M,L,XL', 'Blue,Vintage Wash')">🛒 Add to Cart</button>
       </div>
     </div>
 
     <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/Pants.jpg" alt="Premium Cargo Pants" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">
+      <img src="https://asifpro78.github.io/Asifpro/Pants.jpg" alt="Premium Cargo Pants" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black')">
       <div class="item-content">
         <h3>PREMIUM CARGO PANTS</h3>
         <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
-        <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black', 'Premium Cargo Pants')">🛒 Add to Cart</button>
+        <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', 3000, 2500, '28,30,32,34,36,38', 'Camo,Navy Blue,Beige,Black')">🛒 Add to Cart</button>
       </div>
     </div>
 
-    <!-- NEW ARTICLE: PULL & BEAR CARROT FIT -->
+    <!-- NEW ARTICLE FIXED -->
     <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull & Bear Carrot Fit Denim" onclick="openModal('Pull & Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue', 'Pull & Bear Carrot Fit Denim')">
+      <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull & Bear Carrot Fit Denim" onclick="openModal('Pull & Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">
       <div class="item-content">
         <h3>PULL & BEAR CARROT FIT DENIM</h3>
         <div class="price-wrap"><div class="old-price">Rs. 2500</div><div class="new-price">Rs. 2000 <span class="save-tag">SAVE 500</span></div></div>
-        <button class="btn btn-order" onclick="openModal('Pull & Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue', 'Pull & Bear Carrot Fit Denim')">🛒 Add to Cart</button>
+        <button class="btn btn-order" onclick="openModal('Pull & Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">🛒 Add to Cart</button>
       </div>
     </div>
 
@@ -107,36 +99,26 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
 
 <div id="productModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="modal-close" onclick="closeModal()">&times;</span><div id="modalGallery"></div><button class="arrow left" onclick="prevSlide()">❮</button><button class="arrow right" onclick="nextSlide()">❯</button></div><div class="modal-body"><h2 id="modalTitle"></h2><div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span> <span id="modalPrice"></span></div><div class="info-tag"><strong>1. Select Size:</strong> <div id="modalSizes"></div></div><div class="info-tag"><strong>2. Select Color:</strong> <div id="modalColors"></div></div><div class="info-tag azadi-tag">🇵🇰 AZADI OFFER: Flat 20% OFF till 14 Aug</div><div class="btn-group"><button class="modal-btn" id="modalBtnCart">🛍️ Add to Cart</button></div></div></div></div>
 
-<!-- UPDATED CART MODAL -->
 <div id="cartModal" class="modal"><div class="modal-content" style="display: flex; flex-direction: column; height: 100vh;">
   <div class="modal-header" style="background: #28a745; color: white; padding: 12px 15px; border-radius: 0; position: sticky; top: 0; z-index: 10;">
     <h2 style="margin:0; color:white; font-size:18px;">🛒 Your Cart</h2>
     <span class="modal-close" onclick="closeCart()">&times;</span>
   </div>
-
   <div style="flex: 1; overflow-y: auto; padding: 10px 12px;">
     <div id="cartItems"></div>
-    
     <div style="background: #f2f2f2; padding: 10px; border-radius: 8px; margin: 8px 0;">
       <h4 style="margin: 0 0 6px; color: #28a745; font-size: 14px;">📦 Delivery Details</h4>
-      <input type="text" id="custName" placeholder="Full Name *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
-      <input type="tel" id="custPhone" placeholder="Phone *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box;">
-      <input type="text" id="custAddress" placeholder="Complete Address * House #, Street, Area" required style="width: 95%; padding: 14px 10px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; min-height: 45px; box-sizing: border-box;">
+      <input type="text" id="custName" placeholder="Full Name *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+      <input type="tel" id="custPhone" placeholder="Phone *" required style="width: 95%; padding: 8px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+      <input type="text" id="custAddress" placeholder="Complete Address * House #, Street, Area" required style="width: 95%; padding: 14px 10px; margin: 3px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; min-height: 45px;">
     </div>
-    
     <p style="margin: 5px 0; font-size: 10px; color: #333;"><b>💵 Payment:</b> Cash On Delivery</p>
     <p style="margin: 5px 0; font-size: 10px; color: #333;"><b>🚚 Delivery:</b> Rs. 300 → <b style="color:#28a745;">Rs. 210</b></p>
-
     <button class="modal-btn" style="padding: 14px; font-size: 16px; margin-top: 15px;" onclick="checkoutCart()">📱 Place Order on WhatsApp</button>
   </div>
 </div></div>
 
-<!-- IMAGE ZOOM MODAL -->
-<div id="imageZoomModal">
-  <span class="close-zoom" onclick="closeImageZoom()">&times;</span>
-  <img id="zoomedImage">
-</div>
-
+<div id="imageZoomModal"><span class="close-zoom" onclick="closeImageZoom()">&times;</span><img id="zoomedImage"></div>
 <div id="cartBar" class="cart-bar" onclick="openCart()">🛒 Cart: <span id="cartCount">0</span> items - Proceed to Checkout</div>
 
 <script>
@@ -147,10 +129,10 @@ let currentSlide = 0;
 let selectedSize = '';
 let selectedColor = '';
 
-function openModal(title, img, oldPrice, newPrice, sizes, colors, productName) {
+function openModal(title, img, oldPrice, newPrice, sizes, colors) {
   document.getElementById("productModal").style.display = "block";
   document.body.style.overflow = "hidden";
-  currentProduct = {title, oldPrice, newPrice, sizes, colors, productName};
+  currentProduct = {title, oldPrice, newPrice, sizes, colors}; // FIX: productName hata diya
   selectedSize = ''; selectedColor = '';
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
@@ -176,7 +158,6 @@ function showSlide() {
 }
 function nextSlide() { currentSlide = (currentSlide + 1) % slideImages.length; showSlide(); }
 function prevSlide() { currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length; showSlide(); }
-
 function openImageZoom(src) {
   document.getElementById("imageZoomModal").style.display = "block";
   document.getElementById("zoomedImage").src = src;
@@ -184,7 +165,6 @@ function openImageZoom(src) {
 function closeImageZoom() {
   document.getElementById("imageZoomModal").style.display = "none";
 }
-
 function selectSize(el,size) {
   document.querySelectorAll('#modalSizes .size').forEach(s => s.classList.remove('active'));
   el.classList.add('active'); selectedSize = size;
@@ -193,7 +173,6 @@ function selectColor(el,color) {
   document.querySelectorAll('#modalColors .color-option').forEach(s => s.classList.remove('active'));
   el.classList.add('active'); selectedColor = color;
 }
-
 function addToCartFromModal() {
   if(!selectedSize){ alert("Please select a Size first"); return; }
   if(!selectedColor){ alert("Please select a Color first"); return; }
@@ -241,4 +220,4 @@ function checkoutCart() {
 }
 </script>
 </body>
-</html>
+  </html>
