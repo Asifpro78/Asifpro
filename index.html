@@ -80,7 +80,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       </div>
     </div>
 
-    <!-- NEW ARTICLE FIXED -->
+    <!-- NEW ARTICLE -->
     <div class="item">
       <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull & Bear Carrot Fit Denim" onclick="openModal('Pull & Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">
       <div class="item-content">
@@ -132,7 +132,7 @@ let selectedColor = '';
 function openModal(title, img, oldPrice, newPrice, sizes, colors) {
   document.getElementById("productModal").style.display = "block";
   document.body.style.overflow = "hidden";
-  currentProduct = {title, oldPrice, newPrice, sizes, colors}; // FIX: productName hata diya
+  currentProduct = {title: title, oldPrice: oldPrice, newPrice: newPrice, sizes: sizes, colors: colors}; // YAHAN FIX
   selectedSize = ''; selectedColor = '';
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalOldPrice").innerText = "Rs. " + oldPrice;
@@ -220,4 +220,4 @@ function checkoutCart() {
 }
 </script>
 </body>
-  </html>
+        </html>
