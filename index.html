@@ -79,7 +79,7 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       </div>
     </div>
 
-    <!-- SIRF YE 3 CARGO HAIN AB @ 2500 -->
+    <!-- SAB CARGO AIK JAGA -->
     <div class="item">
       <img src="https://asifpro78.github.io/Asifpro/Pants2.jpg" alt="Camo Cargo Pants" onclick="openModal('Camo Cargo Pants', 'Pants2.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo', 'Camo Cargo Pants')">
       <div class="item-content">
@@ -180,7 +180,7 @@ function addToCartFromModal() {
   updateCartBar(); alert(`${currentProduct.title} - Size ${selectedSize.innerText} Cart me add ho gaya`); closeModal();
 }
 function updateCartBar() {document.getElementById("cartCount").innerText = cart.length;document.getElementById("cartBar").style.display = cart.length > 0? 'block' : 'none';}
-function openCart() {document.getElementById("cartModal").style.display = "block";document.body.style.overflow = 'hidden';let html = '';if(cart.length==0){html='<p>Cart khali hai</p>';}else{cart.forEach((item,i)=>{html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:10px;">Remove</button></div>`;});}document.getElementById("cartItems").innerHTML = html;}
+function openCart() {document.getElementById("cartModal").style.display = "block";document.body.style.overflow = 'hidden';let html = '';if(cart.length==0){html='<p>Cart khali hai</p>';}else{cart.forEach((item,i)=>{html+=`<div class="cart-item"><b>${item.title}</b><br>Size: ${item.size} | Rs. ${item.price}<br><button onclick="removeCart(${i})" style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;margin-top:5px;">Remove</button></div>`;});}document.getElementById("cartItems").innerHTML = html;}
 function closeCart() {document.getElementById("cartModal").style.display = "none";document.body.style.overflow = 'auto';}
 function removeCart(i) {cart.splice(i,1);updateCartBar();openCart();}
 function clearCart(){cart=[];updateCartBar();openCart();}
@@ -204,4 +204,4 @@ function checkoutCart() {
 function cancelOrder() { if(lastOrderId == ""){alert("Abhi tak koi order nahi kiya");} else { window.open(`https://wa.me/923052305245?text=Cancel Order Request%0AOrder ID: ${lastOrderId}`); } }
 </script>
 </body>
-</html>                                                                                                                                                        </html>
+</html>
