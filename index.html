@@ -83,13 +83,17 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       <div class="price-wrap"><div class="old-price">Rs. 3000</div><div class="new-price">Rs. 2500 <span class="save-tag">SAVE 500</span></div></div>
       <p><b>Available Colors:</b> <span class="color-tag">Color 1</span> <span class="color-tag">Color 2</span> <span class="color-tag">Color 3</span> <span class="color-tag">Color 4</span></p>
       <p><b>Sizes:</b> <span class="size">28</span> <span class="size">30</span> <span class="size">32</span> <span class="size">34</span> <span class="size">36</span> <span class="size">38</span></p>
-      <button class="btn btn-order" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo, Navy Blue, Beige, Black', 'Premium Cargo Pants')">🛒 Order Now - Azadi Offer</button>
+      
+      <!-- YEH 2 BUTTON ADD KARDIYE -->
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-view" onclick="openModal('Premium Cargo Pants', 'Pants.jpg,Pants1.jpg,Pants2.jpg,Pants4.jpg', '3000', '2500', '28,30,32,34,36,38', 'Camo, Navy Blue, Beige, Black', 'Premium Cargo Pants')" style="flex:1; background:#555;">👀 View Details</button>
+        
+        <button class="btn btn-order" onclick="addToCart('Premium Cargo Pants', 2500, 'Pants.jpg')" style="flex:1;">🛒 Add to Cart</button>
+      </div>
+
     </div>
   </div>
 </div>
-
-</div>
-
 <div class="contact-card">
   <h2>📍 Visit Our Shop</h2>
   <div class="address"><p><b>Shop #BS47, Rex Center</b></p><p>Saddar, Karachi, Pakistan</p></div>
