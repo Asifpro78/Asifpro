@@ -80,13 +80,13 @@ body {font-family: Arial;text-align: center;background: #e0e0e0;margin: 0;displa
       </div>
     </div>
 
-    <!-- NEW ARTICLE WITH ID 3 -->
+    <!-- NEW ARTICLE -->
     <div class="item">
-      <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull And Bear Carrot Fit Denim" onclick="openModal(3,'Pull And Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">
+      <img src="https://asifpro78.github.io/Asifpro/carrot1.jpg" alt="Pull and Bear Carrot Fit Denim" onclick="openModal(3,'Pull and Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">
       <div class="item-content">
-        <h3>PULL And BEAR CARROT FIT DENIM</h3>
+        <h3>PULL AND BEAR CARROT FIT DENIM</h3>
         <div class="price-wrap"><div class="old-price">Rs. 2500</div><div class="new-price">Rs. 2000 <span class="save-tag">SAVE 500</span></div></div>
-        <button class="btn btn-order" onclick="openModal(3,'Pull And Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">🛒 Add to Cart</button>
+        <button class="btn btn-order" onclick="openModal(3,'Pull and Bear Carrot Fit Denim', 'carrot1.jpg,carrot2.jpg', 2500, 2000, '28,30,32,34,36', 'Sky Blue,Mid Blue')">🛒 Add to Cart</button>
       </div>
     </div>
 
@@ -215,7 +215,11 @@ function checkoutCart() {
   let subtotal = 0;let msg = "Assalamualaikum Asifpro%0A*NEW ORDER - AZADI SALE*%0A%0A";
   msg += `*Customer Details:*%0A`;msg += `Name: ${name}%0A`;msg += `Phone: ${phone}%0A`;msg += `Address: ${address}%0A%0A`;
   msg += `*Order Items:*%0A`;
-  cart.forEach(item => { msg += `- ${item.title} | Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}%0A`; subtotal+=item.price; });
+  cart.forEach(item => { 
+    let encodedTitle = encodeURIComponent(item.title); // YEH LINE ADD KI
+    msg += `- ${decodeURIComponent(encodedTitle)} | Size: ${item.size} | Color: ${item.color} | Rs. ${item.price}%0A`; 
+    subtotal+=item.price; 
+  });
   let total = subtotal + 210;
   msg+=`%0ASubtotal: Rs ${subtotal}%0ADelivery: Rs 210%0A*Total: Rs ${total}*%0A`;
   msg+=`%0APayment: Cash On Delivery%0APlease confirm order. Thank you!`;
